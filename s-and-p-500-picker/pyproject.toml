@@ -1,0 +1,27 @@
+[project]
+name = "s-and-p-500-picker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Konrad Zatorski", email = "kodiz2005@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "lxml>=6.1.1",
+    "pandas>=3.0.5",
+    "requests>=2.34.2",
+]
+
+[project.scripts]
+s-and-p-500-picker = "s_and_p_500_picker:main"
+
+[build-system]
+requires = ["uv_build>=0.12.2,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-mock>=3.15.1",
+]
