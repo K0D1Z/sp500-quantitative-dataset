@@ -2,6 +2,10 @@
 This module provides functionality to create a mapping between stock tickers and their corresponding CIK (Central Index Key) numbers. 
 It uses the current S&P 500 composition as a base, supplements historical (removed) tickers using the SEC file, and fills any remaining 
 dead tickers using a local fallback JSON file. 
+Source for company tickers: https://www.sec.gov/files/company_tickers.json
+Source for artificially created fallback CIKs: using Gemini 3.1 Pro and Claude Sonnet 5 (DATA VERIFICATION IN PROGRESS - SOME ARE COMPLETELY WRONG)
+The module also checks for any tickers that are still missing CIKs after the fallback process and prints a warning message with the list of those tickers,
+indicating that they need to be added
 """
 
 import pandas as pd
@@ -67,8 +71,8 @@ def map_ticker_to_cik() -> pd.DataFrame:
     final_mapping = pd.concat([current_base, removed_base], ignore_index=True)
 
     # Fill in any missing CIKs using the fallback CIKs from the local JSON file
-    missing_mask = final_mapping["CIK"].isna()
-    final_mapping.loc[missing_mask, "CIK"] = final_mapping.loc[missing_mask, "Ticker"].map(fallback_ciks)
+    mapped_fallback_ciks = final_mapping["Ticker"].map(fallback_ciks)
+    final_mapping["CIK"] = final_mapping["CIK"].fillna(mapped_fallback_ciks)
 
     # Check for any tickers that are still missing CIKs after the fallback process
     missing_ciks_after_fallback = final_mapping[final_mapping["Ticker"].isna() | final_mapping["CIK"].isna() | final_mapping["Company Name"].isna()]

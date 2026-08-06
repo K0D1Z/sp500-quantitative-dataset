@@ -51,11 +51,11 @@ def test_retrieve_companies(mocker):
     assert isinstance(companies, pd.DataFrame)
     assert isinstance(changes, pd.DataFrame)
     
-    assert "Symbol" in companies.columns
-    assert companies.iloc[0]["Symbol"] == "AAPL"
+    assert "Ticker" in companies.columns
+    assert companies.iloc[0]["Ticker"] == "AAPL"
     
-    assert "Added_Ticker" in changes.columns
-    assert changes.iloc[0]["Added_Ticker"] == "TSLA"
+    assert "Added Ticker" in changes.columns
+    assert changes.iloc[0]["Added Ticker"] == "TSLA"
 
 
 def test_http_error(mocker):
@@ -69,3 +69,4 @@ def test_http_error(mocker):
 
     with pytest.raises(HTTPError):
         retrieve_s_and_p_500_companies()
+        
