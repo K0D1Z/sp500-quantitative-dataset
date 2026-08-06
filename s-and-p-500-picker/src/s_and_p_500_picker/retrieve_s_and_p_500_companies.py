@@ -22,20 +22,18 @@ def retrieve_s_and_p_500_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
             - historical_changes: DataFrame containing the historical changes to the S&P 500 index.
 
             companies DataFrame columns:
-                - Symbol: The stock ticker symbol of the company.
-                - Security: The name of the company.
                 - CIK: The Central Index Key (CIK) of the company.
-                - GICS Sector: The Global Industry Classification Standard (GICS) sector of the company
-                - Date added: The date the company was added to the S&P 500 index.
+                - Ticker: The stock ticker symbol of the company.
+                - Company Name: The name of the company.
+                - Date Added: The date the company was added to the S&P 500 index.
 
             historical_changes DataFrame columns:
-                - Date: The date of the change in the S&P 500 index.
-                - Added_Ticker: The stock ticker symbol of the company added to the index.
-                - Added_Security: The name of the company added to the index.
-                - Removed_Ticker: The stock ticker symbol of the company removed from the index.
-                - Removed_Security: The name of the company removed from the index.
-                - Reason: The reason for the change in the index (e.g., merger, acquisition, etc.).
-        
+                - Change Date: The date of the change in the S&P 500 index.
+                - Added Ticker: The stock ticker symbol of the company added to the index.
+                - Added Company Name: The name of the company added to the index.
+                - Removed Ticker: The stock ticker symbol of the company removed from the index.
+                - Removed Company Name: The name of the company removed from the index.
+                - Change Reason: The reason for the change in the index (e.g., merger, acquisition, etc.).
     Raises:
         requests.exceptions.RequestException: If there is an issue with the HTTP request to Wikipedia.        
     """
@@ -58,11 +56,12 @@ def retrieve_s_and_p_500_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     # Extract the companies and historical changes tables from the list of tables
 
-    companies_columns = ["Symbol", "Security", "CIK", "GICS Sector", "Date added"]
+    companies_columns = ["CIK", "Symbol", "Security", "Date added"]
     companies = tables[0][companies_columns]
     companies["Date added"] = pd.to_datetime(companies["Date added"], errors="coerce")
     # Sort the companies by the "Date added" column in ascending order and reset the index
     companies = companies.sort_values(by="Date added", ascending=True).reset_index(drop=True)
+    companies.rename(columns={"CIK": "CIK", "Symbol": "Ticker", "Security": "Company Name", "Date added": "Date Added"}, inplace=True)
 
     historical_changes_columns = ["Date", "Added_Ticker", "Added_Security", "Removed_Ticker", "Removed_Security", "Reason"]
     historical_changes = tables[1]
@@ -74,6 +73,7 @@ def retrieve_s_and_p_500_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
     historical_changes = historical_changes[mask_historical_changes]
     # Sort the historical changes by the "Date" column in ascending order and reset the index
     historical_changes = historical_changes.sort_values(by="Date", ascending=True).reset_index(drop=True)
+    historical_changes.rename(columns={"Date": "Change Date", "Added_Ticker": "Added Ticker", "Added_Security": "Added Company Name", "Removed_Ticker": "Removed Ticker", "Removed_Security": "Removed Company Name", "Reason": "Change Reason"}, inplace=True)
 
     return companies, historical_changes
 
