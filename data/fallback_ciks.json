@@ -1,1123 +1,138 @@
 {
-    "COV": {
-        "CIK": "0001385187",
-        "Company Name": "Covidien plc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001385187"
-        ]
-    },
-    "SWY": {
-        "CIK": "0000086144",
-        "Company Name": "Safeway Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/86144/000118143113055055/0001181431-13-055055-index.html"
-        ]
-    },
-    "PETM": {
-        "CIK": "0000863157",
-        "Company Name": "PetSmart Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000863157"
-        ]
-    },
-    "CFN": {
-        "CIK": "0001457543",
-        "Company Name": "CareFusion Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001457543"
-        ]
-    },
-    "AGN": {
-        "CIK": "0001578845",
-        "Company Name": "Allergan plc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1578845/000156459017002433/0001564590-17-002433-index.htm"
-        ]
-    },
-    "AVP": {
-        "CIK": "0000008868",
-        "Company Name": "Avon Products Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000008868"
-        ]
-    },
-    "DNR": {
-        "CIK": "0000945764",
-        "Company Name": "Denbury Resources Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/945764/000094576420000009/0000945764-20-000009-index.htm"
-        ]
-    },
-    "WIN": {
-        "CIK": "0001282266",
-        "Company Name": "Windstream Holdings, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "LO": {
-        "CIK": "0001424847",
-        "Company Name": "Lorillard, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001424847"
-        ]
-    },
-    "QEP": {
-        "CIK": "0001108827",
-        "Company Name": "QEP Resources, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1108827/000110882714000016/0001108827-14-000016-index.htm"
-        ]
-    },
-    "TEG": {
-        "CIK": "0000916863",
-        "Company Name": "Integrys Energy Group, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000916863"
-        ]
-    },
-    "DTV": {
-        "CIK": "0001465112",
-        "Company Name": "DIRECTV",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "PLL": {
-        "CIK": "0000075829",
-        "Company Name": "Pall Corporation",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/75829/000120677413002436/0001206774-13-002436-index.htm"
-        ]
-    },
-    "HSP": {
-        "CIK": "0001274057",
-        "Company Name": "Hospira, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1274057/000127405714000008/0001274057-14-000008-index.htm"
-        ]
-    },
-    "JOY": {
-        "CIK": "0000801898",
-        "Company Name": "Joy Global Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "HCBK": {
-        "CIK": "0000921847",
-        "Company Name": "Hudson City Bancorp, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "SIAL": {
-        "CIK": "0000090185",
-        "Company Name": "Sigma-Aldrich Corporation",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/90185/000009018514000028/0000090185-14-000028-index.htm"
-        ]
-    },
-    "CSC": {
-        "CIK": "0000023082",
-        "Company Name": "Computer Sciences Corporation",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "CMCSK": {
-        "CIK": "0001166691",
-        "Company Name": "Comcast Corporation (Class K)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "ALTR": {
-        "CIK": "0000768251",
-        "Company Name": "Altera Corporation",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/768251/0001193125-15-209214-index.htm"
-        ]
-    },
-    "ACE": {
-        "CIK": "0000896159",
-        "Company Name": "ACE Limited (now Chubb Limited)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "BRCM": {
-        "CIK": "0001054374",
-        "Company Name": "Broadcom Corporation",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "PCP": {
-        "CIK": "0000079958",
-        "Company Name": "Precision Castparts Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000079958"
-        ]
-    },
-    "PCL": {
-        "CIK": "0000849213",
-        "Company Name": "Plum Creek Timber Co., Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/849213/0001193125-06-151759-index.htm"
-        ]
-    },
-    "GMCR": {
-        "CIK": "0000909954",
-        "Company Name": "Green Mountain Coffee Roasters / Keurig Green Mountain, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "ESV": {
-        "CIK": "0000314808",
-        "Company Name": "Ensco plc (now Valaris plc)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "CAM": {
-        "CIK": "0000941548",
-        "Company Name": "Cameron International Corporation",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/941548/000120700616000022/0001207006-16-000022-index.htm"
-        ]
-    },
-    "TWC": {
-        "CIK": "0001377013",
-        "Company Name": "Time Warner Cable Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "ARG": {
-        "CIK": "0000804212",
-        "Company Name": "Airgas, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "CCE": {
-        "CIK": "0001491675",
-        "Company Name": "Coca-Cola Enterprises, Inc. (New CCE, 2010-2016)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1491675/0001491675-13-000011-index.htm"
-        ]
-    },
-    "BXLT": {
-        "CIK": "0001620546",
-        "Company Name": "Baxalta Incorporated",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001053112&dateRange=all"
-        ]
-    },
-    "CVC": {
-        "CIK": "0001053112",
-        "Company Name": "Cablevision Systems Corporation",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001053112"
-        ]
-    },
-    "GAS": {
-        "CIK": "0001004155",
-        "Company Name": "AGL Resources Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1004155/0001004155-14-000008-index.htm"
-        ]
-    },
-    "CPGX": {
-        "CIK": "0001629995",
-        "Company Name": "Columbia Pipeline Group, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1629995/000112760216044482/0001127602-16-044482-index.htm"
-        ]
-    },
-    "TYC": {
-        "CIK": "0000833444",
-        "Company Name": "Tyco International (now Johnson Controls International plc)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "EMC": {
-        "CIK": "0000790070",
-        "Company Name": "EMC Corporation",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000790070&owner=exclude&count=40"
-        ]
-    },
-    "CA": {
-        "CIK": "0000356028",
-        "Company Name": "CA, Inc. (Computer Associates)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0000356028&dateRange=all"
-        ]
-    },
-    "SPLS": {
-        "CIK": "0000791519",
-        "Company Name": "Staples Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/791519/0000791519-14-000007-index.htm"
-        ]
-    },
-    "COL": {
-        "CIK": "0001137411",
-        "Company Name": "Rockwell Collins, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1137411/000113741118000111/0001137411-18-000111-index.htm"
-        ]
-    },
-    "TIF": {
-        "CIK": "0000098246",
-        "Company Name": "Tiffany & Co.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0000098246&dateRange=all"
-        ]
-    },
-    "CXO": {
-        "CIK": "0001358071",
-        "Company Name": "Concho Resources Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1358071/000135807114000005/0001358071-14-000005-index.htm"
-        ]
-    },
-    "NLSN": {
-        "CIK": "0001492633",
-        "Company Name": "Nielsen Holdings plc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/Archives/edgar/data/1492633/000156459022035446/0001564590-22-035446-index.htm"
-        ]
-    },
-    "SBNY": {
-        "CIK": "0001288784",
-        "Company Name": "Signature Bank",
-        "Status": "correct",
-        "Sources": [
-        "https://www.sec.gov/edgar/browse/?CIK=0001288784",
-        "https://www.sec.gov/edgar/search/#/q=0001288784&dateRange=all"
-        ]
-    },
-    "RE": {
-        "CIK": "0001095073",
-        "Company Name": "Everest Re Group, Ltd. (now Everest Group, Ltd.)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001095073&dateRange=all"
-        ]
-    },
-    "ADS": {
-        "CIK": "0001101215",
-        "Company Name": "Alliance Data Systems (now Bread Financial Holdings)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001101215&dateRange=all"
-        ]
-    },
-    "WYN": {
-        "CIK": "0001361658",
-        "Company Name": "Wyndham Worldwide Corp (now Travel + Leisure Co.)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001361658&dateRange=all"
-        ]
-    },
-    "DPS": {
-        "CIK": "0001418135",
-        "Company Name": "Dr Pepper Snapple Group (now Keurig Dr Pepper)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001418135&dateRange=all"
-        ]
-    },
-    "ARNC": {
-        "CIK": "0000004281",
-        "Company Name": "Arconic Inc. (now Howmet Aerospace Inc.)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0000004281&dateRange=all"
-        ]
-    },
-    "CHK": {
-        "CIK": "0000895126",
-        "Company Name": "Chesapeake Energy Corp (now Expand Energy Corp)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0000895126&dateRange=all"
-        ]
-    },
-    "FBHS": {
-        "CIK": "0001519751",
-        "Company Name": "Fortune Brands Home & Security (now Fortune Brands Innovations)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001519751&dateRange=all"
-        ]
-    },
-    "WLTW": {
-        "CIK": "0001140536",
-        "Company Name": "Willis Towers Watson plc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001140536&dateRange=all"
-        ]
-    },
-    "FLT": {
-        "CIK": "0001175454",
-        "Company Name": "FleetCor Technologies (now Corpay, Inc.)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001175454&dateRange=all"
-        ]
-    },
-    "DISCK": {
-        "CIK": "0001437107",
-        "Company Name": "Discovery Communications (now Warner Bros. Discovery)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001437107&dateRange=all"
-        ]
-    },
-    "DISCA": {
-        "CIK": "0001437107",
-        "Company Name": "Discovery Communications (now Warner Bros. Discovery)",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001437107&dateRange=all"
-        ]
-    },
-    "MNK": {
-        "CIK": "0001567892",
-        "Company Name": "Mallinckrodt plc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/search/#/q=0001567892&dateRange=all&startdt=1995-06-01&enddt=2020-04-21"
-        ]
-    },
-    "HOT": {
-        "CIK": "0000316206",
-        "Company Name": "Starwood Hotels & Resorts Worldwide, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000316206"
-        ]
-    },
-    "DO": {
-        "CIK": "0000949039",
-        "Company Name": "Diamond Offshore Drilling, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000949039"
-        ]
-    },
-    "LM": {
-        "CIK": "0000704051",
-        "Company Name": "Legg Mason, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000704051"
-        ]
-    },
-    "STJ": {
-        "CIK": "0000203077",
-        "Company Name": "St. Jude Medical, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000203077"
-        ]
-    },
-    "ENDP": {
-        "CIK": "0001593034",
-        "Company Name": "Endo International plc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001593034"
-        ]
-    },
-    "LLTC": {
-        "CIK": "0000791907",
-        "Company Name": "Linear Technology Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000791907"
-        ]
-    },
-    "HAR": {
-        "CIK": "0000800459",
-        "Company Name": "Harman International Industries, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000800459"
-        ]
-    },
-    "FTR": {
-        "CIK": "0000020520",
-        "Company Name": "Frontier Communications Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000020520"
-        ]
-    },
-    "SWN": {
-        "CIK": "0000007332",
-        "Company Name": "Southwestern Energy Co",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000007332"
-        ]
-    },
-    "DNB": {
-        "CIK": "0001115222",
-        "Company Name": "Dun & Bradstreet Corp/NW",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001115222"
-        ]
-    },
-    "TGNA": {
-        "CIK": "0000039899",
-        "Company Name": "TEGNA Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000039899"
-        ]
-    },
-    "MJN": {
-        "CIK": "0001452575",
-        "Company Name": "Mead Johnson Nutrition Co",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001452575"
-        ]
-    },
-    "YHOO": {
-        "CIK": "0001011006",
-        "Company Name": "Yahoo! Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001011006"
-        ]
-    },
-    "RAI": {
-        "CIK": "0001275283",
-        "Company Name": "Reynolds American Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001275283"
-        ]
-    },
-    "WFM": {
-        "CIK": "0000865436",
-        "Company Name": "Whole Foods Market, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000865436"
-        ]
-    },
-    "BCR": {
-        "CIK": "0000009892",
-        "Company Name": "C. R. Bard, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000009892"
-        ]
-    },
-    "SNI": {
-        "CIK": "0001430602",
-        "Company Name": "Scripps Networks Interactive, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001430602"
-        ]
-    },
-    "PDCO": {
-        "CIK": "0000892482",
-        "Company Name": "Patterson Companies, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000892482"
-        ]
-    },
-    "MON": {
-        "CIK": "0001110783",
-        "Company Name": "Monsanto Co",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001110783"
-        ]
-    },
-    "GGP": {
-        "CIK": "0001496048",
-        "Company Name": "GGP Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001496048"
-        ]
-    },
-    "XL": {
-        "CIK": "0000875159",
-        "Company Name": "XL Group Ltd",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000875159"
-        ]
-    },
-    "SRCL": {
-        "CIK": "0000861878",
-        "Company Name": "Stericycle Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000861878"
-        ]
-    },
-    "AET": {
-        "CIK": "0001122304",
-        "Company Name": "Aetna Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001122304"
-        ]
-    },
-    "SCG": {
-        "CIK": "0000754737",
-        "Company Name": "SCANA Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000754737"
-        ]
-    },
-    "NFX": {
-        "CIK": "0000912750",
-        "Company Name": "Newfield Exploration Co",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000912750"
-        ]
-    },
-    "DWDP": {
-        "CIK": "0001666700",
-        "Company Name": "DowDuPont Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001666700"
-        ]
-    },
-    "BMS": {
-        "CIK": "0000011199",
-        "Company Name": "Bemis Co Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000011199"
-        ]
-    },
-    "LLL": {
-        "CIK": "0001039101",
-        "Company Name": "L3 Technologies, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001039101"
-        ]
-    },
-    "RHT": {
-        "CIK": "0001087423",
-        "Company Name": "Red Hat Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001087423"
-        ]
-    },
-    "FL": {
-        "CIK": "0000850209",
-        "Company Name": "Foot Locker, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000850209"
-        ]
-    },
-    "TSS": {
-        "CIK": "0000721683",
-        "Company Name": "Total System Services Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000721683"
-        ]
-    },
-    "CELG": {
-        "CIK": "0000816284",
-        "Company Name": "Celgene Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000816284"
-        ]
-    },
-    "VIAB": {
-        "CIK": "0001339947",
-        "Company Name": "Viacom Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001339947"
-        ]
-    },
-    "ETFC": {
-        "CIK": "0001015780",
-        "Company Name": "E TRADE Financial Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001015780"
-        ]
-    },
-    "NBL": {
-        "CIK": "0000072207",
-        "Company Name": "Noble Energy Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000072207"
-        ]
-    },
-    "FLIR": {
-        "CIK": "0000354908",
-        "Company Name": "FLIR Systems Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000354908"
-        ]
-    },
-    "HFC": {
-        "CIK": "0000048039",
-        "Company Name": "HollyFrontier Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000048039"
-        ]
-    },
-    "ALXN": {
-        "CIK": "0000899866",
-        "Company Name": "Alexion Pharmaceuticals Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000899866"
-        ]
-    },
-    "MXIM": {
-        "CIK": "0000743316",
-        "Company Name": "Maxim Integrated Products Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000743316"
-        ]
-    },
-    "KSU": {
-        "CIK": "0000054480",
-        "Company Name": "Kansas City Southern",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000054480"
-        ]
-    },
-    "HBI": {
-        "CIK": "0001359841",
-        "Company Name": "Hanesbrands Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001359841"
-        ]
-    },
-    "GPS": {
-        "CIK": "0000039911",
-        "Company Name": "Gap Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000039911"
-        ]
-    },
-    "XLNX": {
-        "CIK": "0000743988",
-        "Company Name": "Xilinx Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000743988"
-        ]
-    },
-    "CERN": {
-        "CIK": "0000804753",
-        "Company Name": "Cerner Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000804753"
-        ]
-    },
-    "DRE": {
-        "CIK": "0000783280",
-        "Company Name": "Duke Realty Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000783280"
-        ]
-    },
-    "CTXS": {
-        "CIK": "0000877890",
-        "Company Name": "Citrix Systems Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000877890"
-        ]
-    },
-    "TWTR": {
-        "CIK": "0001418091",
-        "Company Name": "Twitter Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001418091"
-        ]
-    },
-    "SIVB": {
-        "CIK": "0000719739",
-        "Company Name": "SVB Financial Group",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000719739"
-        ]
-    },
-    "FRC": {
-        "CIK": "0001132979",
-        "Company Name": "First Republic Bank",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001132979"
-        ]
-    },
-    "ATVI": {
-        "CIK": "0000718877",
-        "Company Name": "Activision Blizzard Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000718877"
-        ]
-    },
-    "SEE": {
-        "CIK": "0001012100",
-        "Company Name": "Sealed Air Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001012100"
-        ]
-    },
-    "CDAY": {
-        "CIK": "0001725057",
-        "Company Name": "Ceridian HCM Holding Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001725057"
-        ]
-    },
-    "PXD": {
-        "CIK": "0001038357",
-        "Company Name": "Pioneer Natural Resources Co",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001038357"
-        ]
-    },
-    "CMA": {
-        "CIK": "0000028412",
-        "Company Name": "Comerica Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000028412"
-        ]
-    },
-    "MRO": {
-        "CIK": "0000101778",
-        "Company Name": "Marathon Oil Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000101778"
-        ]
-    },
-    "CTLT": {
-        "CIK": "0001596783",
-        "Company Name": "Catalent Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001596783"
-        ]
-    },
-    "DFS": {
-        "CIK": "0001393612",
-        "Company Name": "Discover Financial Services",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001393612"
-        ]
-    },
-    "JNPR": {
-        "CIK": "0001043604",
-        "Company Name": "Juniper Networks Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001043604"
-        ]
-    },
-    "ANSS": {
-        "CIK": "0001013462",
-        "Company Name": "ANSYS Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001013462"
-        ]
-    },
-    "HES": {
-        "CIK": "0000004447",
-        "Company Name": "Hess Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000004447"
-        ]
-    },
-    "WBA": {
-        "CIK": "0001618921",
-        "Company Name": "Walgreens Boots Alliance Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001618921"
-        ]
-    },
-    "IPG": {
-        "CIK": "0000051644",
-        "Company Name": "Interpublic Group of Companies, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000051644"
-        ]
-    },
-    "K": {
-        "CIK": "0000055067",
-        "Company Name": "Kellogg Co",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000055067"
-        ]
-    },
-    "KRFT": {
-        "CIK": "0001545158",
-        "Company Name": "Kraft Foods Group, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001545158"
-        ]
-    },
-    "FDO": {
-        "CIK": "0000034408",
-        "Company Name": "Family Dollar Stores, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000034408"
-        ]
-    },
-    "DISH": {
-        "CIK": "0001001039",
-        "Company Name": "DISH Network Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001001039",
-            "https://data.sec.gov/submissions/CIK0001001039.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "ABMD": {
-        "CIK": "0000081509",
-        "Company Name": "ABIOMED Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0000081509",
-            "https://data.sec.gov/submissions/CIK0000081509.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "INFO": {
-        "CIK": "0001592086",
-        "Company Name": "IHS Markit Ltd",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001592086",
-            "https://data.sec.gov/submissions/CIK0001592086.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "PBCT": {
-        "CIK": "0001339191",
-        "Company Name": "People's United Financial Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001339191",
-            "https://data.sec.gov/submissions/CIK0001339191.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "XEC": {
-        "CIK": "0001167888",
-        "Company Name": "Cimarex Energy Co",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001167888",
-            "https://data.sec.gov/submissions/CIK0001167888.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "RTN": {
-        "CIK": "0000104752",
-        "Company Name": "Raytheon Company Name",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0000104752",
-            "https://data.sec.gov/submissions/CIK0000104752.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "JWN": {
-        "CIK": "0000073020",
-        "Company Name": "Nordstrom Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0000073020",
-            "https://data.sec.gov/submissions/CIK0000073020.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "VAR": {
-        "CIK": "0001094093",
-        "Company Name": "Varian Medical Systems Inc",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001094093",
-            "https://data.sec.gov/submissions/CIK0001094093.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "WCG": {
-        "CIK": "0001275811",
-        "Company Name": "WellCare Health Plans, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001275811",
-            "https://data.sec.gov/submissions/CIK0001275811.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "ESRX": {
-        "CIK": "0001533276",
-        "Company Name": "Express Scripts Holding Co",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001533276",
-            "https://data.sec.gov/submissions/CIK0001533276.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "ANDV": {
-        "CIK": "0000088048",
-        "Company Name": "Andeavor",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0000088048",
-            "https://data.sec.gov/submissions/CIK0000088048.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "EVHC": {
-        "CIK": "0001573198",
-        "Company Name": "Envision Healthcare Corp",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001573198",
-            "https://data.sec.gov/submissions/CIK0001573198.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "TWX": {
-        "CIK": "0001105472",
-        "Company Name": "Time Warner Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001105472",
-            "https://data.sec.gov/submissions/CIK0001105472.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "CSRA": {
-        "CIK": "0001648930",
-        "Company Name": "CSRA Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001648930",
-            "https://data.sec.gov/submissions/CIK0001648930.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "LVLT": {
-        "CIK": "0001042121",
-        "Company Name": "Level 3 Communications, Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0001042121",
-            "https://data.sec.gov/submissions/CIK0001042121.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    },
-    "BHI": {
-        "CIK": "0000008080",
-        "Company Name": "Baker Hughes Inc.",
-        "Status": "correct",
-        "Sources": [
-            "https://www.sec.gov/edgar/browse/?CIK=0000008080",
-            "https://data.sec.gov/submissions/CIK0000008080.json",
-            "https://www.sec.gov/files/company_tickers.json"
-        ]
-    }
+  "COV": {"CIK": "0001385187", "Company Name": "Covidien plc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001385187"]},
+  "SWY": {"CIK": "0000086144", "Company Name": "Safeway Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/86144/000118143113055055/0001181431-13-055055-index.html"]},
+  "PETM": {"CIK": "0000863157", "Company Name": "PetSmart Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000863157"]},
+  "CFN": {"CIK": "0001457543", "Company Name": "CareFusion Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001457543"]},
+  "AGN": {"CIK": "0001578845", "Company Name": "Allergan plc", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1578845/000156459017002433/0001564590-17-002433-index.htm"]},
+  "AVP": {"CIK": "0000008868", "Company Name": "Avon Products Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000008868"]},
+  "DNR": {"CIK": "0000945764", "Company Name": "Denbury Resources Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/945764/000094576420000009/0000945764-20-000009-index.htm"]},
+  "WIN": {"CIK": "0001282266", "Company Name": "Windstream Holdings, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001282266"]},
+  "LO": {"CIK": "0001424847", "Company Name": "Lorillard, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001424847"]},
+  "QEP": {"CIK": "0001108827", "Company Name": "QEP Resources, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1108827/000110882714000016/0001108827-14-000016-index.htm"]},
+  "TEG": {"CIK": "0000916863", "Company Name": "Integrys Energy Group, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000916863"]},
+  "KRFT": {"CIK": "0001545158", "Company Name": "Kraft Foods Group, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001545158"]},
+  "FDO": {"CIK": "0000034408", "Company Name": "Family Dollar Stores, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000034408"]},
+  "DTV": {"CIK": "0001465112", "Company Name": "DIRECTV", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001465112"]},
+  "PLL": {"CIK": "0000075829", "Company Name": "Pall Corporation", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/75829/000120677413002436/0001206774-13-002436-index.htm"]},
+  "HSP": {"CIK": "0001274057", "Company Name": "Hospira, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1274057/000127405714000008/0001274057-14-000008-index.htm"]},
+  "JOY": {"CIK": "0000801898", "Company Name": "Joy Global Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000801898"]},
+  "HCBK": {"CIK": "0000921847", "Company Name": "Hudson City Bancorp, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000921847"]},
+  "SIAL": {"CIK": "0000090185", "Company Name": "Sigma-Aldrich Corporation", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/90185/000009018514000028/0000090185-14-000028-index.htm"]},
+  "CSC": {"CIK": "0000023082", "Company Name": "Computer Sciences Corporation", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000023082"]},
+  "CMCSK": {"CIK": "0001166691", "Company Name": "Comcast Corporation (Class K)", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001166691"]},
+  "ALTR": {"CIK": "0000768251", "Company Name": "Altera Corporation", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/768251/0001193125-15-209214-index.htm"]},
+  "ACE": {"CIK": "0000896159", "Company Name": "ACE Limited (now Chubb Limited)", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000896159"]},
+  "BRCM": {"CIK": "0001054374", "Company Name": "Broadcom Corporation", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001054374"]},
+  "PCP": {"CIK": "0000079958", "Company Name": "Precision Castparts Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000079958"]},
+  "PCL": {"CIK": "0000849213", "Company Name": "Plum Creek Timber Co., Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/849213/0001193125-06-151759-index.htm"]},
+  "GMCR": {"CIK": "0000909954", "Company Name": "Green Mountain Coffee Roasters / Keurig Green Mountain, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000909954"]},
+  "ESV": {"CIK": "0000314808", "Company Name": "Ensco plc (now Valaris plc)", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000314808"]},
+  "CAM": {"CIK": "0000941548", "Company Name": "Cameron International Corporation", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/941548/000120700616000022/0001207006-16-000022-index.htm"]},
+  "TWC": {"CIK": "0001377013", "Company Name": "Time Warner Cable Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001377013"]},
+  "ARG": {"CIK": "0000804212", "Company Name": "Airgas, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000804212"]},
+  "CCE": {"CIK": "0001491675", "Company Name": "Coca-Cola Enterprises, Inc. (New CCE, 2010-2016)", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1491675/0001491675-13-000011-index.htm"]},
+  "BXLT": {"CIK": "0001620546", "Company Name": "Baxalta Incorporated", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001620546"]},
+  "CVC": {"CIK": "0001053112", "Company Name": "Cablevision Systems Corporation", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001053112"]},
+  "GAS": {"CIK": "0001004155", "Company Name": "AGL Resources Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1004155/0001004155-14-000008-index.htm"]},
+  "CPGX": {"CIK": "0001629995", "Company Name": "Columbia Pipeline Group, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1629995/000112760216044482/0001127602-16-044482-index.htm"]},
+  "TYC": {"CIK": "0000833444", "Company Name": "Tyco International (now Johnson Controls International plc)", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000833444"]},
+  "EMC": {"CIK": "0000790070", "Company Name": "EMC Corporation", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000790070&owner=exclude&count=40"]},
+  "CA": {"CIK": "0000356028", "Company Name": "CA, Inc. (Computer Associates)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0000356028&dateRange=all"]},
+  "SPLS": {"CIK": "0000791519", "Company Name": "Staples Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/791519/0000791519-14-000007-index.htm"]},
+  "COL": {"CIK": "0001137411", "Company Name": "Rockwell Collins, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1137411/000113741118000111/0001137411-18-000111-index.htm"]},
+  "TIF": {"CIK": "0000098246", "Company Name": "Tiffany & Co.", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0000098246&dateRange=all"]},
+  "CXO": {"CIK": "0001358071", "Company Name": "Concho Resources Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1358071/000135807114000005/0001358071-14-000005-index.htm"]},
+  "NLSN": {"CIK": "0001492633", "Company Name": "Nielsen Holdings plc", "Status": "correct", "Sources": ["https://www.sec.gov/Archives/edgar/data/1492633/000156459022035446/0001564590-22-035446-index.htm"]},
+  "SBNY": {"CIK": "0001288784", "Company Name": "Signature Bank", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001288784", "https://www.sec.gov/edgar/search/#/q=0001288784&dateRange=all"]},
+  "RE": {"CIK": "0001095073", "Company Name": "Everest Re Group, Ltd. (now Everest Group, Ltd.)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001095073&dateRange=all"]},
+  "ADS": {"CIK": "0001101215", "Company Name": "Alliance Data Systems (now Bread Financial Holdings)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001101215&dateRange=all"]},
+  "WYN": {"CIK": "0001361658", "Company Name": "Wyndham Worldwide Corp (now Travel + Leisure Co.)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001361658&dateRange=all"]},
+  "DPS": {"CIK": "0001418135", "Company Name": "Dr Pepper Snapple Group (now Keurig Dr Pepper)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001418135&dateRange=all"]},
+  "ARNC": {"CIK": "0000004281", "Company Name": "Arconic Inc. (now Howmet Aerospace Inc.)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0000004281&dateRange=all"]},
+  "CHK": {"CIK": "0000895126", "Company Name": "Chesapeake Energy Corp (now Expand Energy Corp)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0000895126&dateRange=all"]},
+  "FBHS": {"CIK": "0001519751", "Company Name": "Fortune Brands Home & Security (now Fortune Brands Innovations)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001519751&dateRange=all"]},
+  "WLTW": {"CIK": "0001140536", "Company Name": "Willis Towers Watson plc", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001140536&dateRange=all"]},
+  "FLT": {"CIK": "0001175454", "Company Name": "FleetCor Technologies (now Corpay, Inc.)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001175454&dateRange=all"]},
+  "DISCK": {"CIK": "0001437107", "Company Name": "Discovery Communications (now Warner Bros. Discovery)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001437107&dateRange=all"]},
+  "DISCA": {"CIK": "0001437107", "Company Name": "Discovery Communications (now Warner Bros. Discovery)", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001437107&dateRange=all"]},
+  "MNK": {"CIK": "0001567892", "Company Name": "Mallinckrodt plc", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/search/#/q=0001567892&dateRange=all"]},
+  "HOT": {"CIK": "0000316206", "Company Name": "Starwood Hotels & Resorts Worldwide, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000316206"]},
+  "DO": {"CIK": "0000949039", "Company Name": "Diamond Offshore Drilling, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000949039"]},
+  "LM": {"CIK": "0000704051", "Company Name": "Legg Mason, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000704051"]},
+  "STJ": {"CIK": "0000203077", "Company Name": "St. Jude Medical, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000203077"]},
+  "ENDP": {"CIK": "0001593034", "Company Name": "Endo International plc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001593034"]},
+  "LLTC": {"CIK": "0000791907", "Company Name": "Linear Technology Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000791907"]},
+  "HAR": {"CIK": "0000800459", "Company Name": "Harman International Industries, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000800459"]},
+  "FTR": {"CIK": "0000020520", "Company Name": "Frontier Communications Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000020520"]},
+  "SWN": {"CIK": "0000007332", "Company Name": "Southwestern Energy Co", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000007332"]},
+  "DNB": {"CIK": "0001115222", "Company Name": "Dun & Bradstreet Corp/NW", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001115222"]},
+  "TGNA": {"CIK": "0000039899", "Company Name": "TEGNA Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000039899"]},
+  "MJN": {"CIK": "0001452575", "Company Name": "Mead Johnson Nutrition Co", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001452575"]},
+  "YHOO": {"CIK": "0001011006", "Company Name": "Yahoo! Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001011006"]},
+  "RAI": {"CIK": "0001275283", "Company Name": "Reynolds American Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001275283"]},
+  "WFM": {"CIK": "0000865436", "Company Name": "Whole Foods Market, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000865436"]},
+  "BCR": {"CIK": "0000009892", "Company Name": "C. R. Bard, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000009892"]},
+  "SNI": {"CIK": "0001430602", "Company Name": "Scripps Networks Interactive, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001430602"]},
+  "PDCO": {"CIK": "0000892482", "Company Name": "Patterson Companies, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000892482"]},
+  "MON": {"CIK": "0001110783", "Company Name": "Monsanto Co", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001110783"]},
+  "GGP": {"CIK": "0001496048", "Company Name": "GGP, Inc. (General Growth Properties)", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001496048"]},
+  "XL": {"CIK": "0000875159", "Company Name": "XL Group Ltd", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000875159"]},
+  "SRCL": {"CIK": "0000861878", "Company Name": "Stericycle Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000861878"]},
+  "AET": {"CIK": "0001122304", "Company Name": "Aetna Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001122304"]},
+  "SCG": {"CIK": "0000754737", "Company Name": "SCANA Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000754737"]},
+  "NFX": {"CIK": "0000912750", "Company Name": "Newfield Exploration Co", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000912750"]},
+  "DWDP": {"CIK": "0001666700", "Company Name": "DowDuPont Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001666700"]},
+  "BMS": {"CIK": "0000011199", "Company Name": "Bemis Co Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000011199"]},
+  "LLL": {"CIK": "0001039101", "Company Name": "L3 Technologies, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001039101"]},
+  "RHT": {"CIK": "0001087423", "Company Name": "Red Hat Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001087423"]},
+  "FL": {"CIK": "0000850209", "Company Name": "Foot Locker, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000850209"]},
+  "TSS": {"CIK": "0000721683", "Company Name": "Total System Services Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000721683"]},
+  "CELG": {"CIK": "0000816284", "Company Name": "Celgene Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000816284"]},
+  "VIAB": {"CIK": "0001339947", "Company Name": "Viacom Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001339947"]},
+  "ETFC": {"CIK": "0001015780", "Company Name": "E*TRADE Financial Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001015780"]},
+  "NBL": {"CIK": "0000072207", "Company Name": "Noble Energy Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000072207"]},
+  "FLIR": {"CIK": "0000354908", "Company Name": "FLIR Systems Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000354908"]},
+  "HFC": {"CIK": "0000048039", "Company Name": "HollyFrontier Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000048039"]},
+  "ALXN": {"CIK": "0000899866", "Company Name": "Alexion Pharmaceuticals Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000899866"]},
+  "MXIM": {"CIK": "0000743316", "Company Name": "Maxim Integrated Products Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000743316"]},
+  "KSU": {"CIK": "0000054480", "Company Name": "Kansas City Southern", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000054480"]},
+  "HBI": {"CIK": "0001359841", "Company Name": "Hanesbrands Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001359841"]},
+  "GPS": {"CIK": "0000039911", "Company Name": "Gap Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000039911"]},
+  "XLNX": {"CIK": "0000743988", "Company Name": "Xilinx Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000743988"]},
+  "CERN": {"CIK": "0000804753", "Company Name": "Cerner Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000804753"]},
+  "DRE": {"CIK": "0000783280", "Company Name": "Duke Realty Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000783280"]},
+  "CTXS": {"CIK": "0000877890", "Company Name": "Citrix Systems Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000877890"]},
+  "TWTR": {"CIK": "0001418091", "Company Name": "Twitter Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001418091"]},
+  "SIVB": {"CIK": "0000719739", "Company Name": "SVB Financial Group", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000719739"]},
+  "FRC": {"CIK": "0001132979", "Company Name": "First Republic Bank", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001132979"]},
+  "ATVI": {"CIK": "0000718877", "Company Name": "Activision Blizzard Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000718877"]},
+  "SEE": {"CIK": "0001012100", "Company Name": "Sealed Air Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001012100"]},
+  "CDAY": {"CIK": "0001725057", "Company Name": "Ceridian HCM Holding Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001725057"]},
+  "PXD": {"CIK": "0001038357", "Company Name": "Pioneer Natural Resources Co", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001038357"]},
+  "CMA": {"CIK": "0000028412", "Company Name": "Comerica Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000028412"]},
+  "MRO": {"CIK": "0000101778", "Company Name": "Marathon Oil Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000101778"]},
+  "CTLT": {"CIK": "0001596783", "Company Name": "Catalent Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001596783"]},
+  "DFS": {"CIK": "0001393612", "Company Name": "Discover Financial Services", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001393612"]},
+  "JNPR": {"CIK": "0001043604", "Company Name": "Juniper Networks Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001043604"]},
+  "ANSS": {"CIK": "0001013462", "Company Name": "ANSYS Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001013462"]},
+  "HES": {"CIK": "0000004447", "Company Name": "Hess Corp", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000004447"]},
+  "WBA": {"CIK": "0001618921", "Company Name": "Walgreens Boots Alliance Inc", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0001618921"]},
+  "IPG": {"CIK": "0000051644", "Company Name": "Interpublic Group of Companies, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000051644"]},
+  "K": {"CIK": "0000055067", "Company Name": "Kellogg Co (now Kellanova)", "Status": "correct", "Sources": ["https://www.sec.gov/cgi-bin/browse-edgar?CIK=0000055067"]},
+  "DISH": {"CIK": "0001001039", "Company Name": "DISH Network Corp", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001001039", "https://www.sec.gov/files/company_tickers.json"]},
+  "ABMD": {"CIK": "0000081509", "Company Name": "ABIOMED Inc", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0000081509", "https://www.sec.gov/files/company_tickers.json"]},
+  "INFO": {"CIK": "0001592086", "Company Name": "IHS Markit Ltd", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001592086", "https://www.sec.gov/files/company_tickers.json"]},
+  "PBCT": {"CIK": "0001339191", "Company Name": "People's United Financial Inc", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001339191", "https://www.sec.gov/files/company_tickers.json"]},
+  "XEC": {"CIK": "0001167888", "Company Name": "Cimarex Energy Co", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001167888", "https://www.sec.gov/files/company_tickers.json"]},
+  "RTN": {"CIK": "0001047122", "Company Name": "Raytheon Company", "Status": "corrected", "Sources": ["https://www.sec.gov/Archives/edgar/data/1047122/000104712218000022/rtn-12312017x10k.htm"]},
+  "JWN": {"CIK": "0000073020", "Company Name": "Nordstrom Inc", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0000073020", "https://www.sec.gov/files/company_tickers.json"]},
+  "VAR": {"CIK": "0001094093", "Company Name": "Varian Medical Systems Inc", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001094093", "https://www.sec.gov/files/company_tickers.json"]},
+  "WCG": {"CIK": "0001275811", "Company Name": "WellCare Health Plans, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001275811", "https://www.sec.gov/files/company_tickers.json"]},
+  "ESRX": {"CIK": "0001533276", "Company Name": "Express Scripts Holding Co", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001533276", "https://www.sec.gov/files/company_tickers.json"]},
+  "ANDV": {"CIK": "0000088048", "Company Name": "Andeavor", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0000088048", "https://www.sec.gov/files/company_tickers.json"]},
+  "EVHC": {"CIK": "0001573198", "Company Name": "Envision Healthcare Corp", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001573198", "https://www.sec.gov/files/company_tickers.json"]},
+  "TWX": {"CIK": "0001105472", "Company Name": "Time Warner Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001105472", "https://www.sec.gov/files/company_tickers.json"]},
+  "CSRA": {"CIK": "0001648930", "Company Name": "CSRA Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001648930", "https://www.sec.gov/files/company_tickers.json"]},
+  "LVLT": {"CIK": "0001042121", "Company Name": "Level 3 Communications, Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0001042121", "https://www.sec.gov/files/company_tickers.json"]},
+  "BHI": {"CIK": "0000008080", "Company Name": "Baker Hughes Inc.", "Status": "correct", "Sources": ["https://www.sec.gov/edgar/browse/?CIK=0000008080", "https://www.sec.gov/files/company_tickers.json"]}
 }
