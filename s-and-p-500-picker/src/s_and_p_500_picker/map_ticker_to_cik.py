@@ -1,11 +1,13 @@
 """
 This module provides functionality to create a mapping between stock tickers and their corresponding CIK (Central Index Key) numbers. 
 It uses the current S&P 500 composition as a base, supplements historical (removed) tickers using the SEC file, and fills any remaining 
-dead tickers using a local fallback JSON file. 
-Source for company tickers: https://www.sec.gov/files/company_tickers.json
-Source for artificially created fallback CIKs: using Gemini 3.1 Pro and Claude Sonnet 5 (DATA VERIFICATION IN PROGRESS - SOME ARE COMPLETELY WRONG)
-The module also checks for any tickers that are still missing CIKs after the fallback process and prints a warning message with the list of those tickers,
-indicating that they need to be added
+dead tickers using a local fallback JSON file. The module also checks for any tickers that are still missing CIKs after the fallback process and prints a warning message with the list of those tickers,
+indicating that they need to be added.
+
+- Source for company tickers: https://www.sec.gov/files/company_tickers.json
+- Source for artificially created fallback CIKs: https://www.sec.gov
+
+NOTE: CIKs fallback JSON file was written manually and verified using Gemini 3.6 Flash and Claude Sonnet 5 (checked manually as well)
 """
 
 import pandas as pd
