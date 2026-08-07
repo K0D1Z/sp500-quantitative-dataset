@@ -6,6 +6,7 @@
 
   "paths": {
     "company_tickers": "data/company_tickers.json",
-    "fallback_ciks": "data/fallback_ciks.json"
+    "fallback_ciks": "data/fallback_ciks.json",
+    "daily_composition": "data/s_and_p_500_daily_composition.csv"
   }
 }

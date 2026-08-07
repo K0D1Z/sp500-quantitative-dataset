@@ -28,7 +28,7 @@ def retrieve_s_and_p_500_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
                 - Date Added: The date the company was added to the S&P 500 index.
 
             historical_changes DataFrame columns:
-                - Change Date: The date of the change in the S&P 500 index.
+                - Date: The date of the change in the S&P 500 index.
                 - Added Ticker: The stock ticker symbol of the company added to the index.
                 - Added Company Name: The name of the company added to the index.
                 - Removed Ticker: The stock ticker symbol of the company removed from the index.
@@ -73,7 +73,7 @@ def retrieve_s_and_p_500_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
     historical_changes = historical_changes[mask_historical_changes]
     # Sort the historical changes by the "Date" column in ascending order and reset the index
     historical_changes = historical_changes.sort_values(by="Date", ascending=True).reset_index(drop=True)
-    historical_changes.rename(columns={"Date": "Change Date", "Added_Ticker": "Added Ticker", "Added_Security": "Added Company Name", "Removed_Ticker": "Removed Ticker", "Removed_Security": "Removed Company Name", "Reason": "Change Reason"}, inplace=True)
+    historical_changes.rename(columns={"Date": "Date", "Added_Ticker": "Added Ticker", "Added_Security": "Added Company Name", "Removed_Ticker": "Removed Ticker", "Removed_Security": "Removed Company Name", "Reason": "Change Reason"}, inplace=True)
 
     return companies, historical_changes
 
