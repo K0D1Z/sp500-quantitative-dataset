@@ -8,6 +8,8 @@
     "company_tickers": "data/company_tickers.json",
     "fallback_ciks": "data/fallback_ciks.json",
     "daily_composition": "data/s_and_p_500_daily_composition.csv",
-    "event_ledger": "data/s_and_p_500_events.csv"
+    "event_ledger": "data/s_and_p_500_events.csv",
+    "historical_prices": "data/s_and_p_500_prices.csv",
+    "missing_tickers": "data/missing_tickers.json"
   }
 }

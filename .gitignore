@@ -1,6 +1,8 @@
 # Data
 *.csv
 data/*.csv
+missing_tickers.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
