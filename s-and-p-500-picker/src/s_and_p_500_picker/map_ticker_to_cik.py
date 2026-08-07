@@ -32,7 +32,9 @@ def map_ticker_to_cik() -> pd.DataFrame:
         sec_json = json.load(file)
         
     with open(fallback_path, "r") as file:
-        fallback_ciks = json.load(file)
+        fallback_ciks_raw = json.load(file)
+
+    fallback_ciks = {ticker: data["CIK"] for ticker, data in fallback_ciks_raw.items()}
 
     # Create a DataFrame from the SEC JSON data and rename columns for consistency
     sec_tickers = pd.DataFrame(sec_json.values())
@@ -59,18 +61,23 @@ def map_ticker_to_cik() -> pd.DataFrame:
         "Removed Ticker": "Ticker", 
         "Removed Company Name": "Wiki Company Name"
     })
+    
     # Filter out any removed tickers that are still present in the current S&P 500 composition
     removed_df = removed_df[~removed_df["Ticker"].isin(current_base["Ticker"])]
+    
     # Merge the removed tickers with the SEC tickers to get their CIKs
     removed_base = pd.merge(removed_df, sec_tickers, on="Ticker", how="left")
+    
     # Fill in the Company Name for removed tickers using the Wiki Company Name if it's missing in the SEC data
     removed_base["Company Name"] = removed_base["Company Name"].fillna(removed_base["Wiki Company Name"])
+    
     # Drop the Wiki Company Name column as it's no longer needed
     removed_base = removed_base.drop(columns=["Wiki Company Name"])
+    
     # Concatenate the current and removed tickers to create the final mapping
     final_mapping = pd.concat([current_base, removed_base], ignore_index=True)
 
-    # Fill in any missing CIKs using the fallback CIKs from the local JSON file
+    # Fill in any missing CIKs using the flattened fallback CIKs
     mapped_fallback_ciks = final_mapping["Ticker"].map(fallback_ciks)
     final_mapping["CIK"] = final_mapping["CIK"].fillna(mapped_fallback_ciks)
 

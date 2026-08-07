@@ -30,7 +30,12 @@ MOCK_SEC_JSON = {
 }
 
 MOCK_FALLBACK_JSON = {
-    "SWY": "0000086144"
+    "SWY": {
+        "CIK": "0000086144",
+        "Company Name": "Safeway Inc.",
+        "Status": "correct",
+        "Sources": ["https://fake-link.sec.gov"]
+    }
 }
 
 def test_map_ticker_to_cik_success(mocker):
