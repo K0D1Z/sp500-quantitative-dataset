@@ -98,39 +98,45 @@ def backfill_missing_prices() -> None:
         with open(failed_tiingo_path, "r") as f:
             failed_logs = json.load(f)
     
-    for item in items_to_fetch:
+    # BYPASS 50 API REQUESTS PER HOUR LOGIC
+    BATCH_SIZE = 45
+    SLEEP_DURATION = 3660    
+    
+    total_items = len(items_to_fetch)
+    for i, item in enumerate(items_to_fetch):
         ticker = item["Ticker"]
         cik = item["CIK"]
-        print(f"Fetching data for {ticker} (CIK: {cik})...")
+        print(f"[{i+1}/{total_items}] Fetching data for {ticker} (CIK: {cik})...")
         
         df = fetch_tiingo_data(ticker, start_date, end_date, api_key)
         
         if isinstance(df, str) and df == "RATE_LIMIT":
-            print("Stopping execution to preserve already fetched data.")
-            break
+            print("Rate limit hit. Sleeping for 61 minutes to reset quota...")
+            time.sleep(SLEEP_DURATION)
+            df = fetch_tiingo_data(ticker, start_date, end_date, api_key)
             
-        if df.empty:
+        if isinstance(df, str) or df.empty:
             failed_logs.append({"Ticker": ticker, "CIK": cik, "Reason": "Tiingo returned 404 or empty data"})
         else:
             backfilled_dataframes.append(df)
         
-        time.sleep(0.3)
-
-    if failed_logs:
-        with open(failed_tiingo_path, "w") as f:
-            json.dump(failed_logs, f, indent=4)
-        print(f"-> Unresolvable tickers logged to {failed_tiingo_path}")
-
-    if not backfilled_dataframes:
-        print("No new data was fetched in this run.")
-        return
-
-    new_data = pd.concat(backfilled_dataframes, ignore_index=True)
-    combined_data = pd.concat([existing_data, new_data], ignore_index=True)
-    combined_data = combined_data.sort_values(by=["Date", "Ticker"]).reset_index(drop=True)
-    
-    combined_data.to_csv(prices_output_path, index=False)
-    print(f"Backfill progress saved to {prices_output_path}")
+        if (i + 1) % BATCH_SIZE == 0 and (i + 1) < total_items:
+            print(f"⏳ Reached batch limit ({BATCH_SIZE} requests). Sleeping for 61 minutes to refresh Tiingo hourly quota...")
+            
+            if backfilled_dataframes:
+                temp_new_data = pd.concat(backfilled_dataframes, ignore_index=True)
+                if os.path.exists(prices_output_path):
+                    curr_data = pd.read_csv(prices_output_path)
+                    combined = pd.concat([curr_data, temp_new_data], ignore_index=True).drop_duplicates(subset=["Date", "Ticker"])
+                else:
+                    combined = temp_new_data
+                combined.to_csv(prices_output_path, index=False)
+                print("Progress saved to disk during sleep.")
+                backfilled_dataframes = []
+                
+            time.sleep(SLEEP_DURATION)
+        else:
+            time.sleep(0.5)
 
 if __name__ == "__main__":
     backfill_missing_prices()
