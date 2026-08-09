@@ -1,3 +1,6 @@
+"""
+A simple script to check the statistics of the resulting csv file.
+"""
 import pandas as pd
 import json
 
