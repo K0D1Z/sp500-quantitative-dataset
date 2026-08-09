@@ -1,17 +1,18 @@
 
 # 📈 S&P 500 Quantitative Dataset & PIT Pipeline
+> Publicly available data should never be behind a paywall—including public corporate data.
 
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?logo=docker&logoColor=white)](https://www.docker.com/)
 [![Managed with uv](https://img.shields.io/badge/Package_Manager-uv-de5b43.svg)](https://github.com/astral-sh/uv)
 [![Tests: Pytest](https://img.shields.io/badge/Tests-Pytest-0A9EDC.svg?logo=pytest&logoColor=white)](https://docs.pytest.org/)
+
+
 [![Data Source: SEC EDGAR](https://img.shields.io/badge/Data_Source-SEC_EDGAR-003366.svg)](https://www.sec.gov/edgar)
 [![Data Source: yfinance](https://img.shields.io/badge/Data_Source-yfinance-6001D2.svg?logo=yahoo&logoColor=white)](https://github.com/ranaroussi/yfinance)
 [![Data Source: Tiingo API](https://img.shields.io/badge/Data_Source-Tiingo_API-028090.svg)](https://api.tiingo.com/)
 [![Documentation: Sphinx](https://img.shields.io/badge/Docs-Sphinx-000000.svg?logo=sphinx&logoColor=white)](#-documentation)
-
-> Publicly available data should never be behind a paywall—including public corporate data.
 
 **Survivorship-Bias-Free**, and **Point-in-Time (PIT)** daily financial dataset of the S&P 500 index. This project reverse-engineers the daily historical index constituents, extracts raw US-GAAP XBRL fundamentals directly from SEC EDGAR, computes TTM (Trailing Twelve Months) flow metrics, incorporates split adjustments, and generates machine-learning-ready technical features.
 
