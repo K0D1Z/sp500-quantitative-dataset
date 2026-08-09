@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  pipeline:
+    build: .
+    container_name: sp500_pipeline
+    environment:
+      - TIINGO_API_KEY=${TIINGO_API_KEY}
+    volumes:
+      - ./data:/app/data
