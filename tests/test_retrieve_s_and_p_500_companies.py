@@ -1,5 +1,5 @@
 """
-This module contains unit tests for the `retrieve_s_and_p_500_companies` function in the 
+This module contains unit tests for the `retrieve_s_and_p_500_companies` function in the
 `s_and_p_500_picker.retrieve_s_and_p_500_companies` module. The tests use the `pytest`
 framework and the `mocker` fixture to mock HTTP requests and responses.
 """
@@ -7,7 +7,9 @@ framework and the `mocker` fixture to mock HTTP requests and responses.
 import pytest
 import pandas as pd
 from requests.exceptions import HTTPError
-from s_and_p_500_picker.retrieve_s_and_p_500_companies import retrieve_s_and_p_500_companies
+from s_and_p_500_picker.retrieve_s_and_p_500_companies import (
+    retrieve_s_and_p_500_companies,
+)
 
 MOCK_HTML = """
 <html>
@@ -36,6 +38,7 @@ MOCK_HTML = """
 </html>
 """
 
+
 def test_retrieve_companies(mocker):
     """
     Test the retrieve_s_and_p_500_companies function with a mock HTTP response.
@@ -44,16 +47,19 @@ def test_retrieve_companies(mocker):
     mock_response.text = MOCK_HTML
     mock_response.raise_for_status.return_value = None
 
-    mocker.patch('s_and_p_500_picker.retrieve_s_and_p_500_companies.requests.get', return_value=mock_response)
+    mocker.patch(
+        "s_and_p_500_picker.retrieve_s_and_p_500_companies.requests.get",
+        return_value=mock_response,
+    )
 
     companies, changes = retrieve_s_and_p_500_companies()
 
     assert isinstance(companies, pd.DataFrame)
     assert isinstance(changes, pd.DataFrame)
-    
+
     assert "Ticker" in companies.columns
     assert companies.iloc[0]["Ticker"] == "AAPL"
-    
+
     assert "Added Ticker" in changes.columns
     assert changes.iloc[0]["Added Ticker"] == "TSLA"
 
@@ -65,8 +71,10 @@ def test_http_error(mocker):
     mock_response = mocker.Mock()
     mock_response.raise_for_status.side_effect = HTTPError("HTTP Error")
 
-    mocker.patch('s_and_p_500_picker.retrieve_s_and_p_500_companies.requests.get', return_value=mock_response)
+    mocker.patch(
+        "s_and_p_500_picker.retrieve_s_and_p_500_companies.requests.get",
+        return_value=mock_response,
+    )
 
     with pytest.raises(HTTPError):
         retrieve_s_and_p_500_companies()
-        
