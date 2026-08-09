@@ -6,6 +6,7 @@ missing_tickers_yfinance.json
 failed_tiingo.json
 failed_sec_fundamentals.json
 fetch_sec_fundamentals_output.txt
+*.parquet
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
