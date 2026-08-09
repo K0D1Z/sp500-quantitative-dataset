@@ -16,6 +16,7 @@ from s_and_p_500_picker.feature_engineering import (
     generate_features
 )
 
+
 MOCK_CONFIG = {
     "paths": {
         "historical_prices": "fake_prices.csv",
@@ -60,7 +61,8 @@ def test_load_and_clean_prices(mocker):
     mock_prices_data = pd.DataFrame({
         "Ticker": ["AAPL", "AAPL"],
         "Date": ["2023-01-02", "2023-01-01"],
-        "Close": [150.0, 145.0]
+        "Close": [150.0, 145.0],
+        "Stock Splits": [0.0, 0.0]
     })
     
     mocker.patch('os.path.exists', return_value=True)
@@ -83,20 +85,21 @@ def test_calculate_financial_ratios():
         "Shares Outstanding (Diluted)": [10.0, np.nan, 5.0],
         "Shares Outstanding (Basic)": [10.0, 20.0, 5.0],  # B should fallback to Basic
         "EPS (Diluted)": [5.0, -2.0, 2.0],                # B has negative EPS (P/E should be NaN)
-        "Stockholders Equity": [500.0, 1000.0, 0.0]       # C has zero equity (P/B should be NaN)
+        "Stockholders Equity": [500.0, 1000.0, 0.0],       # C has zero equity (P/B should be NaN)
+        "Cum Split Factor": [1.0, 1.0, 1.0]               # Added Cum Split Factor
     })
     
     result_df = calculate_financial_ratios(test_df)
     
-    # Market Cap = Close * Shares
-    assert result_df.loc[0, "Market Cap"] == 1000.0  # 100 * 10
-    assert result_df.loc[1, "Market Cap"] == 1000.0  # 50 * 20 (fallback to basic shares)
+    # Market Cap = Close * Shares * Split Factor
+    assert result_df.loc[0, "Market Cap"] == 1000.0  # 100 * 10 * 1.0
+    assert result_df.loc[1, "Market Cap"] == 1000.0  # 50 * 20 * 1.0 (fallback to basic shares)
     
-    # P/E Ratio = Close / EPS (if EPS > 0)
+    # P/E Ratio = Close / (EPS / Split Factor)
     assert result_df.loc[0, "P/E Ratio"] == 20.0     # 100 / 5
     assert pd.isna(result_df.loc[1, "P/E Ratio"])    # Negative EPS -> NaN
     
-    # P/B Ratio = Close / (Equity / Shares)
+    # P/B Ratio = Close / (Equity / Adjusted Shares)
     # Book value per share for A = 500 / 10 = 50. P/B = 100 / 50 = 2.0
     assert result_df.loc[0, "P/B Ratio"] == 2.0
     assert pd.isna(result_df.loc[2, "P/B Ratio"])    # Zero equity -> NaN
@@ -108,7 +111,6 @@ def test_generate_features_workflow(mocker):
     """
     mocker.patch('s_and_p_500_picker.feature_engineering.config', MOCK_CONFIG)
     
-    # Mocking pre-cleaned dataframes instead of read_csv to test merge logic directly
     mock_fund_clean = pd.DataFrame({
         "Ticker": ["AAPL"],
         "Filing Date": [pd.to_datetime("2023-01-01")],
@@ -121,7 +123,8 @@ def test_generate_features_workflow(mocker):
     mock_prices_clean = pd.DataFrame({
         "Ticker": ["AAPL", "AAPL"],
         "Date": [pd.to_datetime("2023-01-02"), pd.to_datetime("2023-01-03")],
-        "Close": [100.0, 110.0]
+        "Close": [100.0, 110.0],
+        "Cum Split Factor": [1.0, 1.0]
     })
     
     mocker.patch('s_and_p_500_picker.feature_engineering.load_and_clean_fundamentals', return_value=mock_fund_clean)
@@ -145,6 +148,6 @@ def test_generate_features_workflow(mocker):
     assert "P/E Ratio" in final_df.columns
     assert "Market Cap" in final_df.columns
     
-    # Check if point-in-time merge worked (prices on Jan 2 and Jan 3 should use fundamentals from Jan 1)
-    assert final_df.iloc[0]["Market Cap"] == 1000.0  # 100.0 * 10.0
-    assert final_df.iloc[1]["Market Cap"] == 1100.0  # 110.0 * 10.0
+    # Check if point-in-time merge worked
+    assert final_df.iloc[0]["Market Cap"] == 1000.0  # 100.0 * 10.0 * 1.0
+    assert final_df.iloc[1]["Market Cap"] == 1100.0  # 110.0 * 10.0 * 1.0

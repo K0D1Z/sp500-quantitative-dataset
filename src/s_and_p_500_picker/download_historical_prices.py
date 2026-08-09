@@ -54,6 +54,7 @@ def download_historical_prices() -> None:
         start=start_date, 
         end=end_date_str, 
         auto_adjust=False,
+        actions = True,
         progress=True
     )
 

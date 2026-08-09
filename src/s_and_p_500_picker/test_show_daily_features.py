@@ -6,6 +6,14 @@ composition_path = config["paths"].get("daily_features_csv", "data/s_and_p_500_d
 df = pd.read_csv(composition_path)
 pd.options.display.max_columns = None
 pd.options.display.max_rows = None
-print(df.head(10))
-print("===================================================")
+
+n_rows = 10
+_width = 150 
+print(f" COLUMNS ".center(_width, "="))
 print(df.columns.tolist())
+print(f" FIRST {n_rows} ROWS ".center(_width, "="))
+print(df.head(n_rows))
+print(f"INFO".center(_width, "="))
+print(df.info())
+print(f"DESCRIPTION".center(_width, "="))
+print(df.describe())
