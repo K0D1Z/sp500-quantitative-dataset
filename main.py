@@ -60,11 +60,11 @@ def main():
         (
             "5. Fetch SEC EDGAR Fundamentals", 
             "src/s_and_p_500_picker/fetch_sec_fundamentals.py"
-            
-            # 6: Feature Engineering
-            # src/..................................
+        ),
+        (
+            "6. Feature Engineering (Point-in-Time Merge & Ratios)", 
+            "src/s_and_p_500_picker/feature_engineering.py"
         )
-        
     ]
 
     for step_name, script_path in pipeline_steps:
