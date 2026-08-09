@@ -228,3 +228,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Sphinx
+
+docs/_build/
+docs/build/
+docs/_doctrees/
+.doctrees/
+docs/s_and_p_500_picker*.rst
+docs/modules.rst
