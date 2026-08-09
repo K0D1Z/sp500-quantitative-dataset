@@ -1,7 +1,7 @@
 """
-This module merges historical daily prices with SEC fundamental data
-using a Point-in-Time approach (merge_asof based on Filing Date).
-It calculates key financial ratios such as Market Cap, P/E, and P/B.
+This module merges historical daily prices with SEC fundamental data using a Point-in-Time approach.
+It calculates TTM (Trailing Twelve Months) metrics, technical indicators (SMA, RSI, Volatility),
+and core financial ratios (Market Cap, P/E, P/B).
 """
 
 import os
@@ -16,7 +16,7 @@ with open("config/config.json", "r") as file:
 def load_and_clean_fundamentals(filepath: str) -> pd.DataFrame:
     """
     Loads fundamental data, compresses multiple rows per filing date,
-    and forward-fills missing metrics per ticker.
+    calculates TTM (Trailing Twelve Months) for flow metrics, and forward-fills values.
     """
     if not os.path.exists(filepath):
         print(f"Fundamentals file not found at {filepath}")
@@ -26,18 +26,62 @@ def load_and_clean_fundamentals(filepath: str) -> pd.DataFrame:
     
     # Ensure datetime formats
     df["Filing Date"] = pd.to_datetime(df["Filing Date"])
-    df = df.sort_values(by=["Ticker", "Filing Date", "Period End"])
+    df["Period End"] = pd.to_datetime(df["Period End"])
+    df = df.sort_values(by=["Ticker", "Period End"])
     
-    # Group by Ticker and Filing Date, taking the last non-null value for each column
-    df_daily = df.groupby(["Ticker", "Filing Date"]).last().reset_index()
+    # Compress multiple filings per period/date
+    df_clean = df.groupby(["Ticker", "Period End"]).last().reset_index()
     
-    # Forward fill remaining missing values per ticker (carry forward from previous quarters)
+    # Define flow metrics that need TTM (sum over last 4 quarters / approx 1 year)
+    flow_metrics = [
+        "Revenue", "Cost of Revenue", "Gross Profit", "R&D Expenses", 
+        "SG&A Expenses", "Operating Income", "Net Income", 
+        "Operating Cash Flow", "CapEx", "Dividends Paid", "Stock Repurchases"
+    ]
+    
+    # Calculate TTM for flow metrics using a rolling window of 4 quarters per ticker
+    for metric in flow_metrics:
+        if metric in df_clean.columns:
+            df_clean[metric] = df_clean.groupby("Ticker")[metric].transform(
+                lambda x: x.rolling(window=4, min_periods=1).sum()
+            )
+
+    # Sort back by filing date for point-in-time merge alignment
+    df_clean = df_clean.sort_values(by=["Ticker", "Filing Date", "Period End"])
+    df_daily = df_clean.groupby(["Ticker", "Filing Date"]).last().reset_index()
+    
     df_daily = df_daily.sort_values(["Ticker", "Filing Date"])
-    
-    cols_to_fill = df_daily.columns.drop(["Ticker", "Filing Date"])
+    cols_to_fill = df_daily.columns.drop(["Ticker", "Filing Date", "Period End", "Form"], errors="ignore")
     df_daily[cols_to_fill] = df_daily.groupby("Ticker")[cols_to_fill].ffill()
     
     return df_daily
+
+def add_technical_indicators(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Calculates technical analysis features (SMA 50, SMA 200, Volatility, RSI).
+    """
+    print("Calculating technical indicators...")
+    df = df.sort_values(by=["Ticker", "Date"])
+    
+    # Moving Averages
+    df["SMA_50"] = df.groupby("Ticker")["Close"].transform(lambda x: x.rolling(window=50, min_periods=10).mean())
+    df["SMA_200"] = df.groupby("Ticker")["Close"].transform(lambda x: x.rolling(window=200, min_periods=30).mean())
+    
+    # 30-Day Rolling Volatility (Standard Deviation of daily returns)
+    daily_returns = df.groupby("Ticker")["Close"].pct_change()
+    df["Volatility_30D"] = daily_returns.groupby(df["Ticker"]).transform(lambda x: x.rolling(window=30, min_periods=10).std())
+    
+    # 14-Day RSI (Relative Strength Index)
+    def calculate_rsi(series, period=14):
+        delta = series.diff()
+        gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
+        loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
+        rs = gain / loss
+        return 100 - (100 / (1 + rs))
+        
+    df["RSI_14"] = df.groupby("Ticker")["Close"].transform(lambda x: calculate_rsi(x))
+    
+    return df
 
 def load_and_clean_prices(filepath: str) -> pd.DataFrame:
     """
@@ -70,6 +114,9 @@ def load_and_clean_prices(filepath: str) -> pd.DataFrame:
     # Go back to normal chronological sorting
     df = df.sort_values(by=["Date", "Ticker"]).reset_index(drop=True)
     
+    # Add technical indicators
+    df = add_technical_indicators(df)
+    
     return df
 
 def calculate_financial_ratios(df: pd.DataFrame) -> pd.DataFrame:
@@ -83,8 +130,7 @@ def calculate_financial_ratios(df: pd.DataFrame) -> pd.DataFrame:
     adjusted_shares = raw_shares * df["Cum Split Factor"]
     df["Market Cap"] = df["Close"] * adjusted_shares
 
-    # Price-to-Earnings (P/E) Ratio
-    # Using EPS Diluted directly if available
+    # TTM EPS Adjusted for Splits
     adjusted_eps = df["EPS (Diluted)"] / df["Cum Split Factor"]
     df["P/E Ratio"] = np.where(
         (adjusted_eps.notna()) & (adjusted_eps > 0),

@@ -55,20 +55,16 @@ def retrieve_s_and_p_500_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
     tables = pd.read_html(html_data)
 
     # Extract the companies and historical changes tables from the list of tables
-
-    companies_columns = ["CIK", "Symbol", "Security", "Date added"]
-    companies = tables[0][companies_columns]
+    companies_columns = ["CIK", "Symbol", "GICS Sector", "GICS Sub-Industry", "Security", "Date added"]
+    companies = tables[0][companies_columns].copy()
     companies["Date added"] = pd.to_datetime(companies["Date added"], errors="coerce")
     # Sort the companies by the "Date added" column in ascending order and reset the index
     companies = companies.sort_values(by="Date added", ascending=True).reset_index(drop=True)
-    companies.rename(columns={"CIK": "CIK", "Symbol": "Ticker", "Security": "Company Name", "Date added": "Date Added"}, inplace=True)
+    companies.rename(columns={"CIK": "CIK", "Symbol": "Ticker", "Security": "Company Name", "GICS Sector": "GICS Sector", "GICS Sub-Industry": "GICS Sub-Industry", "Date added": "Date Added"}, inplace=True)
 
     historical_changes_columns = ["Date", "Added_Ticker", "Added_Security", "Removed_Ticker", "Removed_Security", "Reason"]
     historical_changes = tables[1]
-    
-    # FIX: Wikipedia recently added a 7th column. We slice to take only the first 6 core columns.
     historical_changes = historical_changes.iloc[:, :6]
-    
     historical_changes.columns = historical_changes_columns
     historical_changes["Date"] = pd.to_datetime(historical_changes["Date"], errors="coerce")
     

@@ -29,13 +29,14 @@ MOCK_CONFIG = {
 def test_load_and_clean_fundamentals(mocker):
     """
     Tests if multiple filings on the same day are compressed properly,
-    and if missing values are correctly forward-filled over time.
+    and if missing values are correctly forward-filled over time,
+    accounting for TTM calculations.
     """
     mock_fund_data = pd.DataFrame({
         "Ticker": ["AAPL", "AAPL", "AAPL"],
         "Filing Date": ["2023-01-01", "2023-01-01", "2023-04-01"],
         "Period End": ["2022-09-30", "2022-12-31", "2023-03-31"],
-        "Revenue": [1000, 1500, np.nan],  # Revenue is missing in Q2
+        "Revenue": [1000, 1500, np.nan],  # Revenue is missing in Q3
         "Net Income": [100, 150, 200]
     })
     
@@ -47,14 +48,14 @@ def test_load_and_clean_fundamentals(mocker):
     # 3 rows should be compressed to 2 unique Filing Dates for AAPL
     assert len(df) == 2
     
-    # Check if the last period end was kept for the first date
+    # Check if the last period end was kept for the first date (TTM sum: 1000 + 1500 = 2500)
     first_date_row = df[df["Filing Date"] == pd.to_datetime("2023-01-01")].iloc[0]
-    assert first_date_row["Revenue"] == 1500
+    assert first_date_row["Revenue"] == 2500.0
     
-    # Check if forward-fill worked for the missing Revenue on 2023-04-01
+    # Check if forward-fill and TTM worked for the missing Revenue on 2023-04-01
     second_date_row = df[df["Filing Date"] == pd.to_datetime("2023-04-01")].iloc[0]
-    assert second_date_row["Revenue"] == 1500  # Carried forward from previous quarter
-    assert second_date_row["Net Income"] == 200 # Own value kept
+    assert second_date_row["Revenue"] == 2500.0  # Carried forward TTM sum
+    assert second_date_row["Net Income"] == 450.0  # TTM sum: 100 + 150 + 200
 
 def test_load_and_clean_prices(mocker):
     """Tests if prices are loaded and dates are properly parsed and sorted."""
