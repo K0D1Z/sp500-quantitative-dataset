@@ -83,7 +83,8 @@ sp500-quantitative-dataset/
 
 The final dataset (`s_and_p_500_daily_features.csv` / `.parquet`) consists of over **1.6+ million rows** and **45+ features**.
 
-> ⚠️ **IMPORTANT: Downstream Programmatic Handling Required (`NaN` Values)**
+> [!IMPORTANT]
+> **Downstream Programmatic Handling Required (`NaN` Values)**
 > Not all columns in the dataset are 100% populated with non-null values. When writing your trading strategies, backtesting scripts, or machine learning pipelines, **you MUST implement explicit conditional logic and error handling** (e.g., `if pd.notna(...)`, sector-specific feature masking, or forward-filling strategies).
 > Reasons for missing data include:
 > 1. **Industry-Specific Accounting (US-GAAP):** Financial Institutions & Banks (e.g., JPMorgan, Bank of America) do not report *Cost of Revenue* or *Gross Profit*. Non-tech firms rarely disclose *R&D Expenses*.
