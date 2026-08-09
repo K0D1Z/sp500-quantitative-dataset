@@ -10,6 +10,10 @@
     "daily_composition": "data/s_and_p_500_daily_composition.csv",
     "event_ledger": "data/s_and_p_500_events.csv",
     "historical_prices": "data/s_and_p_500_prices.csv",
-    "missing_tickers": "data/missing_tickers.json"
+    "missing_tickers": "data/missing_tickers_yfinance.json",
+    "fundamentals_csv": "data/s_and_p_500_fundamentals.csv",
+    "fundamentals_parquet": "data/s_and_p_500_fundamentals.parquet",
+    "failed_tiingo_log": "data/failed_tiingo.json",
+    "failed_sec_log": "data/failed_sec_fundamentals.json"
   }
 }
