@@ -93,4 +93,4 @@ def test_download_historical_prices(mocker):
     missing_list_saved = mock_json_dump.call_args[0][0]
     
     # DEAD should be recorded as missing
-    assert "DEAD" in missing_list_saved
+    assert any(item.get("Ticker") == "DEAD" for item in missing_list_saved)

@@ -60,27 +60,22 @@ def fetch_tiingo_data(ticker: str, start_date: str, end_date: str, api_key: str)
 def backfill_missing_prices() -> None:
     api_key = os.environ.get("TIINGO_API_KEY")
     if not api_key:
-        print("Error: TIINGO_API_KEY environment variable is not set.")
+        print("Error: TIINGO_API_KEY environment variable is not set. Use `export TIINGO_API_KEY='api_key'` command")
         return
 
     missing_tickers_path = config["paths"].get("missing_tickers", "data/missing_tickers.json")
     prices_output_path = config["paths"].get("historical_prices", "data/s_and_p_500_prices.csv")
+    failed_tiingo_path = config["paths"].get("failed_tiingo_log", "data/failed_tiingo.json")
     start_date = config["date_range"]["start_date"]
     end_date = config["date_range"]["end_date"]
 
-    # 1. Load missing tickers list
     try:
         with open(missing_tickers_path, "r") as file:
-            missing_tickers = json.load(file)
+            missing_tickers_list = json.load(file)
     except FileNotFoundError:
         print(f"Missing tickers file not found at {missing_tickers_path}.")
         return
 
-    if not missing_tickers:
-        print("No missing tickers to backfill.")
-        return
-
-    # 2. Load existing CSV to see what we ALREADY backfilled
     if os.path.exists(prices_output_path):
         existing_data = pd.read_csv(prices_output_path)
         existing_tickers = set(existing_data["Ticker"].unique())
@@ -88,40 +83,49 @@ def backfill_missing_prices() -> None:
         existing_data = pd.DataFrame()
         existing_tickers = set()
 
-    # 3. Filter the list to only fetch what's TRULY missing
-    tickers_to_fetch = [t for t in missing_tickers if t not in existing_tickers]
+    items_to_fetch = [item for item in missing_tickers_list if item["Ticker"] not in existing_tickers]
 
-    if not tickers_to_fetch:
+    if not items_to_fetch:
         print("All missing tickers have already been successfully backfilled!")
         return
 
-    print(f"Attempting to fetch {len(tickers_to_fetch)} remaining tickers from Tiingo...")
+    print(f"Attempting to fetch {len(items_to_fetch)} remaining tickers from Tiingo...")
     
     backfilled_dataframes = []
+    failed_logs = []
+
+    if os.path.exists(failed_tiingo_path):
+        with open(failed_tiingo_path, "r") as f:
+            failed_logs = json.load(f)
     
-    for ticker in tickers_to_fetch:
-        print(f"Fetching data for {ticker}...")
+    for item in items_to_fetch:
+        ticker = item["Ticker"]
+        cik = item["CIK"]
+        print(f"Fetching data for {ticker} (CIK: {cik})...")
+        
         df = fetch_tiingo_data(ticker, start_date, end_date, api_key)
         
-        # If we hit the rate limit, halt the loop to save what we have
         if isinstance(df, str) and df == "RATE_LIMIT":
             print("Stopping execution to preserve already fetched data.")
             break
             
-        if not df.empty:
+        if df.empty:
+            failed_logs.append({"Ticker": ticker, "CIK": cik, "Reason": "Tiingo returned 404 or empty data"})
+        else:
             backfilled_dataframes.append(df)
         
         time.sleep(0.3)
+
+    if failed_logs:
+        with open(failed_tiingo_path, "w") as f:
+            json.dump(failed_logs, f, indent=4)
+        print(f"-> Unresolvable tickers logged to {failed_tiingo_path}")
 
     if not backfilled_dataframes:
         print("No new data was fetched in this run.")
         return
 
-    # 4. Save and consolidate
     new_data = pd.concat(backfilled_dataframes, ignore_index=True)
-    print(f"Successfully fetched {len(new_data)} rows of data.")
-
-    print("Merging with existing historical prices...")
     combined_data = pd.concat([existing_data, new_data], ignore_index=True)
     combined_data = combined_data.sort_values(by=["Date", "Ticker"]).reset_index(drop=True)
     
@@ -130,3 +134,6 @@ def backfill_missing_prices() -> None:
 
 if __name__ == "__main__":
     backfill_missing_prices()
+
+    
+     

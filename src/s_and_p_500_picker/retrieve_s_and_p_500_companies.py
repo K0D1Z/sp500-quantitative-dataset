@@ -65,12 +65,18 @@ def retrieve_s_and_p_500_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     historical_changes_columns = ["Date", "Added_Ticker", "Added_Security", "Removed_Ticker", "Removed_Security", "Reason"]
     historical_changes = tables[1]
+    
+    # FIX: Wikipedia recently added a 7th column. We slice to take only the first 6 core columns.
+    historical_changes = historical_changes.iloc[:, :6]
+    
     historical_changes.columns = historical_changes_columns
     historical_changes["Date"] = pd.to_datetime(historical_changes["Date"], errors="coerce")
+    
     # Filter the historical changes based on the date range specified in the config.json file
     mask_historical_changes = (historical_changes["Date"] >= pd.to_datetime(config["date_range"]["start_date"])) & \
            (historical_changes["Date"] <= pd.to_datetime(config["date_range"]["end_date"]))
     historical_changes = historical_changes[mask_historical_changes]
+    
     # Sort the historical changes by the "Date" column in ascending order and reset the index
     historical_changes = historical_changes.sort_values(by="Date", ascending=True).reset_index(drop=True)
     historical_changes.rename(columns={"Date": "Date", "Added_Ticker": "Added Ticker", "Added_Security": "Added Company Name", "Removed_Ticker": "Removed Ticker", "Removed_Security": "Removed Company Name", "Reason": "Change Reason"}, inplace=True)

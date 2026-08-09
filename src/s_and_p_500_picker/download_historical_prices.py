@@ -1,7 +1,7 @@
 """
 This module downloads historical OHLCV price data for all unique tickers
 identified in the S&P 500 daily composition using Yahoo Finance.
-It logs any missing or delisted tickers for future backfilling.
+It logs any missing or delisted tickers for future backfilling to JSON file.
 """
 
 import pandas as pd
@@ -33,6 +33,7 @@ def download_historical_prices() -> None:
 
     # 2. Extract unique universe of tickers
     df_composition = pd.read_csv(composition_path)
+    ticker_to_cik = df_composition.dropna(subset=["Ticker"]).drop_duplicates(subset=["Ticker"]).set_index("Ticker")["CIK"].to_dict()
     raw_tickers = df_composition["Ticker"].dropna().unique().tolist()
     
     # Map to Yahoo format
@@ -61,26 +62,27 @@ def download_historical_prices() -> None:
         return
 
     # 4. Identify missing tickers (delisted / bankrupt)
-    missing_tickers = []
+    missing_tickers_log = []
     
-    # Check which tickers actually returned columns/data
     if isinstance(data.columns, pd.MultiIndex):
         available_tickers = data.columns.get_level_values('Ticker').unique().tolist()
         
         for ticker in yahoo_tickers:
-            if ticker not in available_tickers:
-                missing_tickers.append(ticker)
-            else:
-                # If ticker is in columns but all 'Close' prices are NaN, it's virtually missing
-                if data['Close'][ticker].isna().all():
-                    missing_tickers.append(ticker)
+            original_ticker = ticker.replace("-", ".")
+            cik = str(ticker_to_cik.get(original_ticker, "UNKNOWN")).zfill(10)
+            
+            if ticker not in available_tickers or data['Close'][ticker].isna().all():
+                missing_tickers_log.append({
+                    "Ticker": original_ticker,
+                    "CIK": cik,
+                    "Reason": "Not found in yfinance (likely delisted)"
+                })
     
-    print(f"\nSuccessfully downloaded data for: {len(yahoo_tickers) - len(missing_tickers)} tickers.")
-    print(f"Missing (delisted) tickers to backfill later: {len(missing_tickers)}")
+    print(f"\nSuccessfully downloaded data for: {len(yahoo_tickers) - len(missing_tickers_log)} tickers.")
+    print(f"Missing (delisted) tickers to backfill later: {len(missing_tickers_log)}")
 
     # 5. Flatten the data for easier use in backtesting
     print("\nFlattening and structuring data...")
-    # stack(level=1) moves Tickers from columns to rows, automatically dropping days with NaNs
     # stack(level=1) moves Tickers from columns to rows, automatically dropping days with NaNs
     flat_data = data.stack(level=1).rename_axis(['Date', 'Ticker']).reset_index()
 
@@ -100,10 +102,9 @@ def download_historical_prices() -> None:
     print(f"-> Historical prices saved to: {prices_output_path}")
 
     # Save missing tickers to JSON for our next steps
-    original_missing = [t.replace("-", ".") for t in missing_tickers]
     with open(missing_tickers_path, "w") as f:
-        json.dump(original_missing, f, indent=4)
-    print(f"-> Missing tickers log saved to: {missing_tickers_path}")
+        json.dump(missing_tickers_log, f, indent=4)
+    print(f"-> Missing tickers log (with CIKs) saved to: {missing_tickers_path}")
 
 
 if __name__ == "__main__":

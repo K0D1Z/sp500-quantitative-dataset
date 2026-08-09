@@ -94,7 +94,7 @@ def test_backfill_missing_prices_workflow(mocker):
     mocker.patch('s_and_p_500_picker.backfill_missing_prices.config', MOCK_CONFIG)
     
     # 3. Mock file reading (missing tickers JSON)
-    mock_file_data = json.dumps(["FRC"])
+    mock_file_data = json.dumps([{"Ticker": "FRC", "CIK": "0000000000", "Reason": "Test reason"}])
     mocker.patch('builtins.open', mocker.mock_open(read_data=mock_file_data))
     
     # 4. Mock fetch_tiingo_data to return a fake backfilled dataframe
@@ -110,7 +110,8 @@ def test_backfill_missing_prices_workflow(mocker):
     })
     mocker.patch('s_and_p_500_picker.backfill_missing_prices.fetch_tiingo_data', return_value=fake_backfilled_df)
     
-    # 5. Mock reading existing prices CSV
+    # 5. Mock reading existing prices CSV (and force os.path.exists to return True)
+    mocker.patch('os.path.exists', return_value=True)
     mocker.patch('pandas.read_csv', return_value=MOCK_EXISTING_PRICES)
     
     # 6. Mock saving to CSV using autospec=True to catch the dataframe instance
