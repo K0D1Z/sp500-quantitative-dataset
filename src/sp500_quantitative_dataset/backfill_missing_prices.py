@@ -9,10 +9,7 @@ import json
 import time
 import pandas as pd
 import requests
-
-# Load configuration from config.json
-with open("config/config.json", "r") as file:
-    config = json.load(file)
+from sp500_quantitative_dataset import config
 
 
 def fetch_tiingo_data(ticker: str, start_date: str, end_date: str, api_key: str):

@@ -4,10 +4,8 @@ Tests the point-in-time merge logic, data cleaning (forward-filling),
 and the accurate calculation of financial ratios (P/E, P/B, Market Cap).
 """
 
-import pytest
 import pandas as pd
 import numpy as np
-import os
 
 from sp500_quantitative_dataset.feature_engineering import (
     load_and_clean_fundamentals,

@@ -12,13 +12,10 @@ NOTE: CIKs fallback JSON file was written manually and verified using Gemini 3.6
 
 import pandas as pd
 import json
-
+from sp500_quantitative_dataset import config
 from sp500_quantitative_dataset.retrieve_companies import (
     retrieve_companies,
 )
-
-with open("config/config.json", "r") as file:
-    config = json.load(file)
 
 
 def map_ticker_to_cik() -> pd.DataFrame:

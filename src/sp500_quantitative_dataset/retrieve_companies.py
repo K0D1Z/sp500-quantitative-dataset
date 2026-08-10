@@ -5,15 +5,9 @@ See the config/config.json file for the date range configuration. Source: https:
 """
 
 from io import StringIO
-import json
 import pandas as pd
 import requests
-
-
-def load_config() -> dict:
-    """Safely loads runtime configuration from config.json."""
-    with open("config/config.json", "r") as file:
-        return json.load(file)
+from sp500_quantitative_dataset import config
 
 
 def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -27,8 +21,6 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
     Raises:
         requests.exceptions.RequestException: If there is an issue with the HTTP request.
     """
-    config = load_config()
-
     # URL of the Wikipedia page containing the list of S&P 500 companies
     url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
 
@@ -107,7 +99,6 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 if __name__ == "__main__":
-    config = load_config()
     companies, changes = retrieve_companies()
 
     print(

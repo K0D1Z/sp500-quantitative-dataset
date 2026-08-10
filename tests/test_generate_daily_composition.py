@@ -3,7 +3,6 @@ This module contains unit test for `generate_daily_composition` function in the 
 `sp500_quantitative_dataset.generate_daily_composition` module.
 """
 
-import pytest
 import pandas as pd
 from sp500_quantitative_dataset.generate_daily_composition import (
     generate_daily_composition,

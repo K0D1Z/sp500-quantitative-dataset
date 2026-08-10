@@ -6,7 +6,6 @@ including current and historical tickers, and that it prints a warning for any t
 fallback process.
 """
 
-import pytest
 import pandas as pd
 from sp500_quantitative_dataset.map_ticker_to_cik import map_ticker_to_cik
 

@@ -18,7 +18,7 @@ S&P 500 Quantitative Dataset & PIT Pipeline
    :caption: Content:
 
    modules
-   readme
+
 
 Links and Indexes
 ===========================

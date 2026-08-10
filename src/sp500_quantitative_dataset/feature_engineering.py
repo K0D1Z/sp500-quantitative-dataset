@@ -5,13 +5,9 @@ and core financial ratios (Market Cap, P/E, P/B).
 """
 
 import os
-import json
 import pandas as pd
 import numpy as np
-
-# Load configuration
-with open("config/config.json", "r") as file:
-    config = json.load(file)
+from sp500_quantitative_dataset import config
 
 
 def load_and_clean_fundamentals(filepath: str) -> pd.DataFrame:

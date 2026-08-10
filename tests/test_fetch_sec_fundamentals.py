@@ -4,10 +4,7 @@ This test suite covers API requesting, JSON parsing, dataframe aggregation,
 and the generation of the final CSV/Parquet datasets including failure logs.
 """
 
-import pytest
 import pandas as pd
-import json
-import os
 
 from sp500_quantitative_dataset.fetch_sec_fundamentals import (
     get_sec_headers,

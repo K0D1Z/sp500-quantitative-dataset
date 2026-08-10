@@ -8,10 +8,7 @@ import pandas as pd
 import yfinance as yf
 import json
 import os
-
-# Load configuration
-with open("config/config.json", "r") as file:
-    config = json.load(file)
+from sp500_quantitative_dataset import config
 
 
 def format_ticker_for_yahoo(ticker: str) -> str:

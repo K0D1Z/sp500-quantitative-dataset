@@ -9,10 +9,7 @@ import json
 import time
 import requests
 import pandas as pd
-
-# Load configuration from config.json
-with open("config/config.json", "r") as file:
-    config = json.load(file)
+from sp500_quantitative_dataset import config
 
 
 def get_sec_headers() -> dict:

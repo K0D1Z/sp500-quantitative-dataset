@@ -1,4 +1,3 @@
-import pytest
 import pandas as pd
 
 from sp500_quantitative_dataset.generate_corporate_events import (
@@ -79,10 +78,6 @@ def test_generate_corporate_events(mocker):
     """
     # Mock file operations and configuration loading
     mocker.patch("builtins.open", mocker.mock_open())
-    mocker.patch(
-        "sp500_quantitative_dataset.generate_corporate_events.json.load",
-        return_value=MOCK_CONFIG,
-    )
 
     # Mock the data retrieval function to return our predefined DataFrames
     mocker.patch(

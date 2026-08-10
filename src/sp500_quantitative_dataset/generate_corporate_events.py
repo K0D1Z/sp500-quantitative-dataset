@@ -6,13 +6,10 @@ standardized corporate events (M&A, MARKET_CAP, SPIN_OFF, BANKRUPTCY, OTHER).
 
 import os
 import pandas as pd
-import json
+from sp500_quantitative_dataset import config
 from sp500_quantitative_dataset.retrieve_companies import (
     retrieve_companies,
 )
-
-with open("config/config.json", "r") as file:
-    config = json.load(file)
 
 
 def categorize_reason(reason_text: str) -> str:

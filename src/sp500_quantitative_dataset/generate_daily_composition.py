@@ -5,16 +5,12 @@ index constituents day by day, mapping each ticker to its exact CIK.
 """
 
 import os
-import json
 import pandas as pd
+from sp500_quantitative_dataset import config
 from sp500_quantitative_dataset.retrieve_companies import (
     retrieve_companies,
 )
 from sp500_quantitative_dataset.map_ticker_to_cik import map_ticker_to_cik
-
-# Load configuration from config.json
-with open("config/config.json", "r") as file:
-    config = json.load(file)
 
 
 def generate_daily_composition() -> pd.DataFrame:
