@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <!-- Główne tło gradientowe: od głębokiej czerni do ciemnego grafitu -->
+    <linearGradient id="dark-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0e12" />
+      <stop offset="50%" stop-color="#1a1c23" />
+      <stop offset="100%" stop-color="#050507" />
+    </linearGradient>
+
+    <!-- Subtelne rozświetlenie w lewym górnym rogu (daje podświetlenie pod szkłem) -->
+    <radialGradient id="glow-top" cx="15%" cy="15%" r="50%">
+      <stop offset="0%" stop-color="#2a2e3d" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0d0e12" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Subtelne rozświetlenie w prawym dolnym rogu -->
+    <radialGradient id="glow-bottom" cx="85%" cy="85%" r="55%">
+      <stop offset="0%" stop-color="#1e2230" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#050507" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Warstwa bazowa -->
+  <rect width="100%" height="100%" fill="url(#dark-base)" />
+
+  <!-- Warstwy światła dla uzyskania głębi pod oszronionym szkłem -->
+  <rect width="100%" height="100%" fill="url(#glow-top)" />
+  <rect width="100%" height="100%" fill="url(#glow-bottom)" />
+</svg>
