@@ -14,7 +14,15 @@
 
 ---
 
+<<<<<<< HEAD
 ## ► Key Highlights & Architecture Features
+=======
+![logo](img/logo.png)
+
+---
+
+## 🌟 Key Highlights & Architecture Features
+>>>>>>> 99d1175 (docs: update README)
 
 1. **Survivorship-Bias-Free Universe:** Reverse-engineers daily index composition from 2015 to present using current constituents and historical change logs. Includes delisted, acquired, and bankrupt companies (e.g., First Republic Bank, SVB).
 2. **Strict Point-in-Time (PIT) Matching:** Fundamentals are merged with market prices based on the official SEC **`Filing Date`** (via `pd.merge_asof`) rather than reporting period ends, completely eliminating **look-ahead bias** in backtesting.
@@ -343,3 +351,7 @@ print(
 ## 🛡 License
 
 Distributed under the **MIT License**. See `LICENSE` for more information.
+
+## Logo Attribution
+<a href="https://www.flaticon.com/free-icons/bear-market" title="bear market icons">Bear market icons created by heisenberg_jr - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/bull-market" title="bull market icons">Bull market icons created by heisenberg_jr - Flaticon</a>
