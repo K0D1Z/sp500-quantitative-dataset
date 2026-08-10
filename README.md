@@ -4,8 +4,6 @@
 
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?logo=docker&logoColor=white)](https://www.docker.com/)
-[![Managed with uv](https://img.shields.io/badge/Package_Manager-uv-de5b43.svg)](https://github.com/astral-sh/uv)
 [![Tests: Pytest](https://img.shields.io/badge/Tests-Pytest-0A9EDC.svg?logo=pytest&logoColor=white)](https://docs.pytest.org/)
 [![Data Source: SEC EDGAR](https://img.shields.io/badge/Data_Source-SEC_EDGAR-003366.svg)](https://www.sec.gov/edgar)
 [![Data Source: yfinance](https://img.shields.io/badge/Data_Source-yfinance-6001D2.svg?logo=yahoo&logoColor=white)](https://github.com/ranaroussi/yfinance)
@@ -26,6 +24,78 @@
 6. **Containerized & Tested:** Fully dockerized via `Docker Compose`, managed with `uv`, and covered by comprehensive integration and unit test suites using `pytest`.
 7. **Everything available for free:** The pipeline uses public APIs and the free plans of data-providing institutions.
 8. **Create only one account:** To use the dataset pipeline, you create only one account (Tiingo).
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* **Docker & Docker Compose** OR **Python 3.12+** with **`uv`** installed.
+* **Tiingo API Key:** Free account at [Tiingo](https://api.tiingo.com/) for historical delisted price backfilling. If you don't want to use your real email address, simply create an additional one with a service provider like [Tuta](https://tuta.com/) (temporary email addresses may not work).
+
+---
+
+### Option 1: Containerized Execution
+
+1. **Clone the repository:**
+
+```bash
+git clone git@github.com:K0D1Z/sp500-quantitative-dataset.git
+cd sp500-quantitative-dataset
+
+```
+
+2. **Configure environment variables:**
+Create a `.env` file in the root directory:
+
+```env
+TIINGO_API_KEY=your_actual_tiingo_api_key_here
+
+```
+
+3. **Build and run the entire pipeline via Docker Compose:**
+
+```bash
+docker compose up --build
+
+```
+
+*The processed datasets will be automatically populated into your local `./data` folder via volume mounts.*
+
+---
+
+### Option 2: Local Python Execution with `uv`
+
+1. **Install `uv` (Fast Python package installer):**
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+```
+
+2. **Set up virtual environment and install dependencies:**
+
+```bash
+uv sync
+
+```
+
+3. **Export your API Key:**
+
+```bash
+export TIINGO_API_KEY="your_actual_tiingo_api_key_here"
+
+```
+
+4. **Run the master ETL pipeline:**
+
+```bash
+uv run python main.py
+
+```
+> [!IMPORTANT]
+> Due to Tiingo's API hourly limits, executing a script on the free plan can take 2-3 hours. If you want to speed up your script, consider purchasing a monthly premium plan with Tiingo. Alternatively, you can purchase monthly API access for a more comprehensive dataset. It's up to you :)
 
 ---
 
@@ -96,8 +166,6 @@ The final dataset (`data/datasets/daily_features/s_and_p_500_daily_features.csv`
 > 1. **Industry-Specific Accounting (US-GAAP):** Financial Institutions & Banks (e.g., JPMorgan, Bank of America) do not report *Cost of Revenue* or *Gross Profit*. Non-tech firms rarely disclose *R&D Expenses*.
 > 2. **Unreported Fields:** Certain corporations do not break out operational sub-metrics in their 10-K/10-Q SEC XBRL filings.
 > 3. **Market Delistings & Complex Corporate Restructuring:** A small minority of historical companies that bankrupted, rapidly merged, or liquidated prior to modernized XBRL disclosures may lack complete financial or pricing records—even after automated backfilling through Tiingo and SEC EDGAR APIs.
-> 
-> 
 
 ### 🛠 Manual Extensibility for Unresolved Tickers
 
@@ -125,7 +193,7 @@ Check it out: [config.json](config/config.json)
 > After changing the project configuration, you can return to the original configuration using the `example_config.json` file.
 > Check it out: [example_config.json](config/example_config.json)
 
-The repository also utilizes [data/config/company_tickers.json](config/company_tickers.json) and [data/config/fallback_ciks.json](data/config/fallback_ciks.json) files—the former downloaded from SEC EDGAR, the latter artificially created and verified for historical delisted tickers.
+The repository also utilizes [data/config/company_tickers.json](data/config/company_tickers.json) and [data/config/fallback_ciks.json](data/config/fallback_ciks.json) files—the former downloaded from SEC EDGAR, the latter artificially created and verified for historical delisted tickers.
 
 * Source for company tickers: https://www.sec.gov/files/company_tickers.json
 * Source for SEC Central Index Keys: https://www.sec.gov
@@ -203,76 +271,6 @@ The repository also utilizes [data/config/company_tickers.json](config/company_t
 | `GICS Sector` | `str` | Global Industry Classification Standard sector. |
 | `GICS Sub-Industry` | `str` | GICS detailed sub-industry group. |
 | `CIK` | `str` | SEC Central Index Key identifier (10-digit zero-padded). |
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-* **Docker & Docker Compose** OR **Python 3.12+** with **`uv`** installed.
-* **Tiingo API Key:** Free account at [Tiingo](https://api.tiingo.com/) for historical delisted price backfilling. If you don't want to use your real email address, simply create an additional one with a service provider like [Tuta](https://tuta.com/) (temporary email addresses may not work).
-
----
-
-### Option 1: Containerized Execution
-
-1. **Clone the repository:**
-
-```bash
-git clone [git@github.com:K0D1Z/sp500-quantitative-dataset.git](git@github.com:K0D1Z/sp500-quantitative-dataset.git)
-cd sp500-quantitative-dataset
-
-```
-
-2. **Configure environment variables:**
-Create a `.env` file in the root directory:
-
-```env
-TIINGO_API_KEY=your_actual_tiingo_api_key_here
-
-```
-
-3. **Build and run the entire pipeline via Docker Compose:**
-
-```bash
-docker compose up --build
-
-```
-
-*The processed datasets will be automatically populated into your local `./data` folder via volume mounts.*
-
----
-
-### Option 2: Local Python Execution with `uv`
-
-1. **Install `uv` (Fast Python package installer):**
-
-```bash
-curl -LsSf [https://astral.sh/uv/install.sh](https://astral.sh/uv/install.sh) | sh
-
-```
-
-2. **Set up virtual environment and install dependencies:**
-
-```bash
-uv sync
-
-```
-
-3. **Export your API Key:**
-
-```bash
-export TIINGO_API_KEY="your_actual_tiingo_api_key_here"
-
-```
-
-4. **Run the master ETL pipeline:**
-
-```bash
-uv run python main.py
-
-```
 
 ---
 
