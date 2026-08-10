@@ -1,4 +1,4 @@
-# ✦ S&P 500 Quantitative Dataset & PIT Pipeline
+# ✦ S&P 500 Quantitative Dataset & PIT Pipeline ✦
 
 > Publicly available data should never be behind a paywall—including public corporate data.
 
