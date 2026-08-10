@@ -1,7 +1,7 @@
 import pytest
 import pandas as pd
 
-from s_and_p_500_picker.generate_corporate_events import (
+from sp500_quantitative_dataset.generate_corporate_events import (
     categorize_reason,
     generate_corporate_events,
 )
@@ -43,7 +43,12 @@ def test_categorize_reason():
 # Integration test for the main module
 
 # Mock configuration matching the expected structure
-MOCK_CONFIG = {"paths": {"events_ledger": "fake_path_events.csv"}}
+MOCK_CONFIG = {
+    "paths": {
+        "events_ledger_csv": "fake_path_events.csv",
+        "events_ledger_parquet": "fake_path_events.parquet",
+    }
+}
 
 # Mock historical changes designed to test filtering and sorting logic
 MOCK_HISTORICAL_CHANGES = pd.DataFrame(
@@ -75,15 +80,18 @@ def test_generate_corporate_events(mocker):
     # Mock file operations and configuration loading
     mocker.patch("builtins.open", mocker.mock_open())
     mocker.patch(
-        "s_and_p_500_picker.generate_corporate_events.json.load",
+        "sp500_quantitative_dataset.generate_corporate_events.json.load",
         return_value=MOCK_CONFIG,
     )
 
     # Mock the data retrieval function to return our predefined DataFrames
     mocker.patch(
-        "s_and_p_500_picker.generate_corporate_events.retrieve_s_and_p_500_companies",
+        "sp500_quantitative_dataset.generate_corporate_events.retrieve_companies",
         return_value=(MOCK_CURRENT, MOCK_HISTORICAL_CHANGES),
     )
+
+    mocker.patch.object(pd.DataFrame, "to_csv")
+    mocker.patch.object(pd.DataFrame, "to_parquet")
 
     result_df = generate_corporate_events()
 

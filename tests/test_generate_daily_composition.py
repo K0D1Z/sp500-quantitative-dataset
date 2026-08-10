@@ -1,12 +1,12 @@
 """
-This module contains unit test for `generate_s_and_p_500_daily_composition` function in the function in the
-`s_and_p_500_picker.generate_s_and_p_500_daily_composition` module.
+This module contains unit test for `generate_daily_composition` function in the function in the
+`sp500_quantitative_dataset.generate_daily_composition` module.
 """
 
 import pytest
 import pandas as pd
-from s_and_p_500_picker.generate_s_and_p_500_daily_composition import (
-    generate_s_and_p_500_daily_composition,
+from sp500_quantitative_dataset.generate_daily_composition import (
+    generate_daily_composition,
 )
 
 
@@ -41,26 +41,26 @@ MOCK_CIK_MAPPING = pd.DataFrame(
 )
 
 
-def test_generate_s_and_p_500_daily_composition(mocker):
+def test_generate_daily_composition(mocker):
     """
-    Checks whether generate_s_and_p_500_daily_composition module correctly
+    Checks whether generate_daily_composition module correctly
     rolls back index changes traversing backwards from end_date to start_date.
     """
     mocker.patch(
-        "s_and_p_500_picker.generate_s_and_p_500_daily_composition.config", MOCK_CONFIG
+        "sp500_quantitative_dataset.generate_daily_composition.config", MOCK_CONFIG
     )
 
     mocker.patch(
-        "s_and_p_500_picker.generate_s_and_p_500_daily_composition.retrieve_s_and_p_500_companies",
+        "sp500_quantitative_dataset.generate_daily_composition.retrieve_companies",
         return_value=(MOCK_CURRENT_COMPANIES, MOCK_HISTORICAL_CHANGES),
     )
 
     mocker.patch(
-        "s_and_p_500_picker.generate_s_and_p_500_daily_composition.map_ticker_to_cik",
+        "sp500_quantitative_dataset.generate_daily_composition.map_ticker_to_cik",
         return_value=MOCK_CIK_MAPPING,
     )
 
-    result_df = generate_s_and_p_500_daily_composition()
+    result_df = generate_daily_composition()
 
     assert isinstance(result_df, pd.DataFrame)
 

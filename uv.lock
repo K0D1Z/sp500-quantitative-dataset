@@ -962,8 +962,8 @@ wheels = [
 ]
 
 [[package]]
-name = "s-and-p-500-picker"
-version = "0.1.0"
+name = "sp500_quantitative_dataset"
+version = "1.0.0"
 source = { editable = "." }
 dependencies = [
     { name = "fastparquet" },

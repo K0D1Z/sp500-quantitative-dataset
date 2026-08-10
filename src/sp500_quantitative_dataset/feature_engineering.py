@@ -94,7 +94,7 @@ def add_technical_indicators(df: pd.DataFrame) -> pd.DataFrame:
         delta = series.diff()
         gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
-        rs = gain / loss
+        rs = gain / loss.replace(0, np.nan)
         return 100 - (100 / (1 + rs))
 
     df["RSI_14"] = df.groupby("Ticker")["Close"].transform(lambda x: calculate_rsi(x))
@@ -145,7 +145,6 @@ def calculate_financial_ratios(df: pd.DataFrame) -> pd.DataFrame:
     adjusting historical shares and EPS using the Cumulative Split Factor.
     """
     # Market Capitalization (Price * Shares Outstanding)
-    # Prefer Diluted shares, fallback to Basic
     raw_shares = df["Shares Outstanding (Diluted)"].fillna(
         df["Shares Outstanding (Basic)"]
     )
@@ -154,17 +153,18 @@ def calculate_financial_ratios(df: pd.DataFrame) -> pd.DataFrame:
 
     # TTM EPS Adjusted for Splits
     adjusted_eps = df["EPS (Diluted)"] / df["Cum Split Factor"]
-    df["P/E Ratio"] = np.where(
-        (adjusted_eps.notna()) & (adjusted_eps > 0), df["Close"] / adjusted_eps, np.nan
+    df["P/E Ratio"] = (
+        df["Close"]
+        .div(adjusted_eps)
+        .where((adjusted_eps.notna()) & (adjusted_eps > 0), np.nan)
     )
 
     # Price-to-Book (P/B) Ratio
-    # Book Value Per Share = Stockholders Equity / Shares Outstanding
     book_value_per_share = df["Stockholders Equity"] / adjusted_shares
-    df["P/B Ratio"] = np.where(
-        (book_value_per_share.notna()) & (book_value_per_share > 0),
-        df["Close"] / book_value_per_share,
-        np.nan,
+    df["P/B Ratio"] = (
+        df["Close"]
+        .div(book_value_per_share)
+        .where((book_value_per_share.notna()) & (book_value_per_share > 0), np.nan)
     )
     return df
 
@@ -175,7 +175,7 @@ def generate_features() -> None:
     calculates metrics, and exports the final Kaggle-ready datasets.
     """
     prices_path = config["paths"].get(
-        "historical_prices", "data/s_and_p_500_prices.csv"
+        "historical_prices_csv", "data/s_and_p_500_prices.csv"
     )
     fundamentals_path = config["paths"].get(
         "fundamentals_csv", "data/s_and_p_500_fundamentals.csv"
@@ -198,11 +198,9 @@ def generate_features() -> None:
         return
 
     print("Performing Point-in-Time merge (asof)...")
-    # merge_asof requires both dataframes to be sorted by the merge key
     prices_df = prices_df.sort_values("Date")
     fund_df = fund_df.sort_values("Filing Date")
 
-    # Match each daily price with the most recent fundamental filing up to that date
     merged_df = pd.merge_asof(
         prices_df,
         fund_df,
@@ -215,14 +213,17 @@ def generate_features() -> None:
     print("Calculating financial ratios (P/E, P/B, Market Cap)...")
     final_df = calculate_financial_ratios(merged_df)
 
-    # Sort and clean up columns
     final_df = final_df.sort_values(by=["Date", "Ticker"]).reset_index(drop=True)
 
     print(f"Exporting final dataset ({len(final_df)} rows)...")
+    if output_csv and os.path.dirname(output_csv):
+        os.makedirs(os.path.dirname(output_csv), exist_ok=True)
     final_df.to_csv(output_csv, index=False)
-    final_df.to_parquet(output_parquet, index=False)
-
     print(f"-> Final CSV saved to: {output_csv}")
+
+    if output_parquet and os.path.dirname(output_parquet):
+        os.makedirs(os.path.dirname(output_parquet), exist_ok=True)
+    final_df.to_parquet(output_parquet, index=False)
     print(f"-> Final Parquet saved to: {output_parquet}")
 
 

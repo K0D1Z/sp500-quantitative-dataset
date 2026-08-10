@@ -291,8 +291,11 @@ valid_pe_mask = aapl["P/E Ratio"].notna()
 clean_aapl = aapl[valid_pe_mask]
 
 # Display Valuation & Technical Features
-print(clean_aapl[["Date", "Close", "Market Cap", "P/E Ratio", "RSI_14", "Volatility_30D"]].head())
-
+print(
+    clean_aapl[
+        ["Date", "Close", "Market Cap", "P/E Ratio", "RSI_14", "Volatility_30D"]
+    ].head()
+)
 ```
 
 ---

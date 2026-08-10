@@ -8,6 +8,11 @@
 S&P 500 Quantitative Dataset & PIT Pipeline
 ===========================================
 
+.. automodule:: sp500-quantitative-dataset.feature_engineering
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 .. toctree::
    :maxdepth: 2
    :caption: Content:

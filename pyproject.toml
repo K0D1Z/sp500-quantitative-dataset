@@ -1,7 +1,7 @@
 [project]
-name = "s-and-p-500-picker"
-version = "0.1.0"
-description = "Add your description here"
+name = "sp500_quantitative_dataset"
+version = "1.0.0"
+description = "Survivorship-bias-free daily prices, SEC filings (TTM), corporate events, and technical indicators (2015–present)."
 readme = "README.md"
 authors = [
     { name = "Konrad Zatorski", email = "kodiz2005@gmail.com" }
@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-s-and-p-500-picker = "s_and_p_500_picker:main"
+sp500_quantitative_dataset = "s_and_p_500_picker:main"
 
 [build-system]
 requires = ["uv_build>=0.12.2,<0.13.0"]

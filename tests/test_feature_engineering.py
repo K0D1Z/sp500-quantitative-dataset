@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import os
 
-from s_and_p_500_picker.feature_engineering import (
+from sp500_quantitative_dataset.feature_engineering import (
     load_and_clean_fundamentals,
     load_and_clean_prices,
     calculate_financial_ratios,
@@ -130,7 +130,7 @@ def test_generate_features_workflow(mocker):
     Tests the full orchestrator: loading, merging asof (Point-in-Time),
     calculating metrics, and saving files.
     """
-    mocker.patch("s_and_p_500_picker.feature_engineering.config", MOCK_CONFIG)
+    mocker.patch("sp500_quantitative_dataset.feature_engineering.config", MOCK_CONFIG)
 
     mock_fund_clean = pd.DataFrame(
         {
@@ -153,11 +153,11 @@ def test_generate_features_workflow(mocker):
     )
 
     mocker.patch(
-        "s_and_p_500_picker.feature_engineering.load_and_clean_fundamentals",
+        "sp500_quantitative_dataset.feature_engineering.load_and_clean_fundamentals",
         return_value=mock_fund_clean,
     )
     mocker.patch(
-        "s_and_p_500_picker.feature_engineering.load_and_clean_prices",
+        "sp500_quantitative_dataset.feature_engineering.load_and_clean_prices",
         return_value=mock_prices_clean,
     )
 

@@ -9,7 +9,7 @@ import pandas as pd
 import json
 import os
 
-from s_and_p_500_picker.fetch_sec_fundamentals import (
+from sp500_quantitative_dataset.fetch_sec_fundamentals import (
     get_sec_headers,
     fetch_company_facts,
     extract_metric_dataframe,
@@ -128,7 +128,7 @@ def test_extract_metric_dataframe():
 def test_process_company_fundamentals(mocker):
     """Tests aggregating multiple financial metrics into a single panel."""
     mocker.patch(
-        "s_and_p_500_picker.fetch_sec_fundamentals.fetch_company_facts",
+        "sp500_quantitative_dataset.fetch_sec_fundamentals.fetch_company_facts",
         return_value=MOCK_SEC_JSON,
     )
 
@@ -152,7 +152,9 @@ def test_generate_fundamentals_dataset(mocker):
     handling failures (Dead Letter Queue logging), and saving CSV/Parquet outputs.
     """
     # 1. Mock configuration
-    mocker.patch("s_and_p_500_picker.fetch_sec_fundamentals.config", MOCK_CONFIG)
+    mocker.patch(
+        "sp500_quantitative_dataset.fetch_sec_fundamentals.config", MOCK_CONFIG
+    )
     mocker.patch("os.path.exists", return_value=True)
 
     # 2. Mock reading composition CSV
@@ -177,7 +179,7 @@ def test_generate_fundamentals_dataset(mocker):
         return pd.DataFrame()
 
     mocker.patch(
-        "s_and_p_500_picker.fetch_sec_fundamentals.process_company_fundamentals",
+        "sp500_quantitative_dataset.fetch_sec_fundamentals.process_company_fundamentals",
         side_effect=mock_process,
     )
 

@@ -4,7 +4,7 @@ import pytest
 import pandas as pd
 import numpy as np
 
-from s_and_p_500_picker.download_historical_prices import (
+from sp500_quantitative_dataset.download_historical_prices import (
     format_ticker_for_yahoo,
     download_historical_prices,
 )
@@ -25,8 +25,10 @@ def test_format_ticker_for_yahoo():
 MOCK_CONFIG = {
     "date_range": {"start_date": "2023-01-01", "end_date": "2023-01-02"},
     "paths": {
-        "daily_composition": "fake_composition.csv",
-        "historical_prices": "fake_prices.csv",
+        "daily_composition_csv": "fake_composition.csv",
+        "daily_composition_parquet": "fake_composition.csv",
+        "historical_prices_csv": "fake_prices.csv",
+        "historical_prices_parquet": "fake_prices.parquet",
         "missing_tickers": "fake_missing.json",
     },
 }
@@ -68,7 +70,9 @@ def test_download_historical_prices(mocker):
     """
     Tests the download, flattening, and missing ticker identification process.
     """
-    mocker.patch("s_and_p_500_picker.download_historical_prices.config", MOCK_CONFIG)
+    mocker.patch(
+        "sp500_quantitative_dataset.download_historical_prices.config", MOCK_CONFIG
+    )
 
     # Mock reading the CSV composition
     mocker.patch("pandas.read_csv", return_value=MOCK_COMPOSITION)
@@ -77,7 +81,9 @@ def test_download_historical_prices(mocker):
     mocker.patch("yfinance.download", return_value=MOCK_YF_DATA)
 
     # Mock file saving
-    mock_to_csv = mocker.patch("pandas.DataFrame.to_csv", autospec=True)
+    mock_to_csv = mocker.patch.object(pd.DataFrame, "to_csv", autospec=True)
+    mock_to_parquet = mocker.patch.object(pd.DataFrame, "to_parquet", autospec=True)
+
     mock_json_dump = mocker.patch("json.dump")
     mocker.patch("builtins.open", mocker.mock_open())
 
@@ -86,6 +92,7 @@ def test_download_historical_prices(mocker):
 
     # Assertions for CSV Saving (Flattened Data)
     assert mock_to_csv.called
+    assert mock_to_parquet.called
     saved_df = mock_to_csv.call_args[0][
         0
     ]  # Get the DataFrame that was about to be saved

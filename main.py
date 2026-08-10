@@ -43,27 +43,27 @@ def main():
     pipeline_steps = [
         (
             "1. Generate Daily Composition",
-            "src/s_and_p_500_picker/generate_s_and_p_500_daily_composition.py",
+            "src/sp500_quantitative_dataset/generate_daily_composition.py",
         ),
         (
             "2. Generate Corporate Events Ledger",
-            "src/s_and_p_500_picker/generate_corporate_events.py",
+            "src/sp500_quantitative_dataset/generate_corporate_events.py",
         ),
         (
             "3. Download Historical Prices (Yahoo Finance)",
-            "src/s_and_p_500_picker/download_historical_prices.py",
+            "src/sp500_quantitative_dataset/download_historical_prices.py",
         ),
         (
             "4. Backfill Missing Prices (Tiingo API)",
-            "src/s_and_p_500_picker/backfill_missing_prices.py",
+            "src/sp500_quantitative_dataset/backfill_missing_prices.py",
         ),
         (
             "5. Fetch SEC EDGAR Fundamentals",
-            "src/s_and_p_500_picker/fetch_sec_fundamentals.py",
+            "src/sp500_quantitative_dataset/fetch_sec_fundamentals.py",
         ),
         (
             "6. Feature Engineering (Point-in-Time Merge & Ratios)",
-            "src/s_and_p_500_picker/feature_engineering.py",
+            "src/sp500_quantitative_dataset/feature_engineering.py",
         ),
     ]
 

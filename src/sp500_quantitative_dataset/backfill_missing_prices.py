@@ -72,7 +72,7 @@ def backfill_missing_prices() -> None:
         "missing_tickers", "data/missing_tickers.json"
     )
     prices_output_path = config["paths"].get(
-        "historical_prices", "data/s_and_p_500_prices.csv"
+        "historical_prices_csv", "data/s_and_p_500_prices.csv"
     )
     failed_tiingo_path = config["paths"].get(
         "failed_tiingo_log", "data/failed_tiingo.json"
@@ -161,6 +161,11 @@ def backfill_missing_prices() -> None:
                     ).drop_duplicates(subset=["Date", "Ticker"])
                 else:
                     combined = temp_new_data
+
+                # Zabezpieczenie katalogu przed zapisem tymczasowym
+                if os.path.dirname(prices_output_path):
+                    os.makedirs(os.path.dirname(prices_output_path), exist_ok=True)
+
                 combined.to_csv(prices_output_path, index=False)
                 print("Progress saved to disk during sleep.")
                 backfilled_dataframes = []
@@ -168,7 +173,11 @@ def backfill_missing_prices() -> None:
         else:
             time.sleep(0.1)
 
+    # Zapis logów nieudanych próśb z tworzeniem katalogu
     if failed_logs:
+        if os.path.dirname(failed_tiingo_path):
+            os.makedirs(os.path.dirname(failed_tiingo_path), exist_ok=True)
+
         with open(failed_tiingo_path, "w") as f:
             json.dump(failed_logs, f, indent=4)
         print(f"-> Unresolvable tickers logged to {failed_tiingo_path}")
@@ -188,6 +197,11 @@ def backfill_missing_prices() -> None:
     combined_data = combined_data.sort_values(by=["Date", "Ticker"]).reset_index(
         drop=True
     )
+
+    # Zabezpieczenie katalogu przed końcowym zapisem CSV
+    if os.path.dirname(prices_output_path):
+        os.makedirs(os.path.dirname(prices_output_path), exist_ok=True)
+
     combined_data.to_csv(prices_output_path, index=False)
     print(f"Backfill progress saved to {prices_output_path}")
 

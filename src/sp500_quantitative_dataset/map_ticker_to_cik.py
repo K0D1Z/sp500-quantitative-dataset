@@ -1,8 +1,8 @@
 """
 This module provides functionality to create a mapping between stock tickers and their corresponding CIK (Central Index Key) numbers.
 It uses the current S&P 500 composition as a base, supplements historical (removed) tickers using the SEC file, and fills any remaining
-dead tickers using a local fallback JSON file. The module also checks for any tickers that are still missing CIKs after the fallback process and prints a warning message with the list of those tickers,
-indicating that they need to be added.
+dead tickers using a local fallback JSON file. The module also checks for any tickers that are still missing CIKs after the fallback
+process and prints a warning message with the list of those tickers, indicating that they need to be added.
 
 - Source for company tickers: https://www.sec.gov/files/company_tickers.json
 - Source for artificially created fallback CIKs: https://www.sec.gov
@@ -12,11 +12,13 @@ NOTE: CIKs fallback JSON file was written manually and verified using Gemini 3.6
 
 import pandas as pd
 import json
-from s_and_p_500_picker.retrieve_s_and_p_500_companies import (
-    retrieve_s_and_p_500_companies,
+
+from sp500_quantitative_dataset.retrieve_companies import (
+    retrieve_companies,
 )
 
-config = json.load(open("config/config.json", "r"))
+with open("config/config.json", "r") as file:
+    config = json.load(file)
 
 
 def map_ticker_to_cik() -> pd.DataFrame:
@@ -49,7 +51,7 @@ def map_ticker_to_cik() -> pd.DataFrame:
     sec_tickers["CIK"] = sec_tickers["CIK"].astype(str).str.zfill(10)
 
     # Retrieve current S&P 500 companies and historical changes
-    current_companies, historical_changes = retrieve_s_and_p_500_companies()
+    current_companies, historical_changes = retrieve_companies()
     current_companies = current_companies.rename(
         columns={"Symbol": "Ticker", "Security": "Company Name"}
     )

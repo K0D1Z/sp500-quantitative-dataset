@@ -4,19 +4,20 @@ It uses the current composition and historically logged changes to reverse-engin
 index constituents day by day, mapping each ticker to its exact CIK.
 """
 
-import pandas as pd
+import os
 import json
-from s_and_p_500_picker.retrieve_s_and_p_500_companies import (
-    retrieve_s_and_p_500_companies,
+import pandas as pd
+from sp500_quantitative_dataset.retrieve_companies import (
+    retrieve_companies,
 )
-from s_and_p_500_picker.map_ticker_to_cik import map_ticker_to_cik
+from sp500_quantitative_dataset.map_ticker_to_cik import map_ticker_to_cik
 
 # Load configuration from config.json
 with open("config/config.json", "r") as file:
     config = json.load(file)
 
 
-def generate_s_and_p_500_daily_composition() -> pd.DataFrame:
+def generate_daily_composition() -> pd.DataFrame:
     """
     Generates a DataFrame containing the daily composition of the S&P 500 index.
     The algorithm iterates backwards from the end date to the start date, reverting
@@ -25,7 +26,7 @@ def generate_s_and_p_500_daily_composition() -> pd.DataFrame:
     Returns:
         pd.DataFrame: A DataFrame with columns ['Date', 'Ticker', 'CIK'].
     """
-    current_companies, historical_changes = retrieve_s_and_p_500_companies()
+    current_companies, historical_changes = retrieve_companies()
     historical_changes["Date"] = pd.to_datetime(historical_changes["Date"])
 
     cik_mapping_df = map_ticker_to_cik()
@@ -81,17 +82,27 @@ def generate_s_and_p_500_daily_composition() -> pd.DataFrame:
         by=["Date", "Ticker"]
     ).reset_index(drop=True)
 
+    # Save output to CSV
+    output_path_csv = config["paths"].get(
+        "daily_composition_csv", "data/s_and_p_500_daily_composition.csv"
+    )
+    if output_path_csv and os.path.dirname(output_path_csv):
+        os.makedirs(os.path.dirname(output_path_csv), exist_ok=True)
+    daily_composition_df.to_csv(output_path_csv, index=False)
+
+    # Save output to Parquet
+    output_path_parquet = config["paths"].get(
+        "daily_composition_parquet", "data/s_and_p_500_daily_composition.parquet"
+    )
+    if output_path_parquet and os.path.dirname(output_path_parquet):
+        os.makedirs(os.path.dirname(output_path_parquet), exist_ok=True)
+    daily_composition_df.to_parquet(output_path_parquet, index=False)
+
     return daily_composition_df
 
 
 if __name__ == "__main__":
-    daily_composition = generate_s_and_p_500_daily_composition()
-
-    # Save output to CSV
-    output_path = config["paths"].get(
-        "daily_composition", "data/s_and_p_500_daily_composition.csv"
-    )
-    daily_composition.to_csv(output_path, index=False)
+    daily_composition = generate_daily_composition()
 
     print(daily_composition.head())
     print(f"Total rows generated: {len(daily_composition)}")

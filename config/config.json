@@ -5,17 +5,26 @@
   },
 
   "paths": {
-    "company_tickers": "data/company_tickers.json",
-    "fallback_ciks": "data/fallback_ciks.json",
-    "daily_composition": "data/s_and_p_500_daily_composition.csv",
-    "event_ledger": "data/s_and_p_500_events.csv",
-    "historical_prices": "data/s_and_p_500_prices.csv",
-    "missing_tickers": "data/missing_tickers_yfinance.json",
-    "fundamentals_csv": "data/s_and_p_500_fundamentals.csv",
-    "fundamentals_parquet": "data/s_and_p_500_fundamentals.parquet",
-    "failed_tiingo_log": "data/failed_tiingo.json",
-    "failed_sec_log": "data/failed_sec_fundamentals.json",
-    "daily_features_csv": "data/s_and_p_500_daily_features.csv",
-    "daily_features_parquet": "data/s_and_p_500_daily_features.parquet"
+    "company_tickers": "data/config/company_tickers.json",
+    "fallback_ciks": "data/config/fallback_ciks.json",
+
+    "missing_tickers": "data/missing/missing_tickers_yfinance.json",
+    "failed_tiingo_log": "data/missing/missing_tickers_tiingo.json",
+    "failed_sec_log": "data/missing/missing_sec_fundamentals.json",
+
+    "event_ledger_csv": "data/datasets/events/s_and_p_500_events.csv",
+    "event_ledger_parquet": "data/datasets/events/s_and_p_500_events.parquet",
+
+    "daily_composition_csv": "data/datasets/daily_composition/s_and_p_500_daily_composition.csv",
+    "daily_composition_parquet": "data/datasets/daily_composition/s_and_p_500_daily_composition.parquet",
+
+    "historical_prices_csv": "data/datasets/historical_prices/s_and_p_500_prices.csv",
+    "historical_prices_parquet": "data/datasets/historical_prices/s_and_p_500_prices.parquet",
+
+    "fundamentals_csv": "data/datasets/fundamental_data/s_and_p_500_fundamentals.csv",
+    "fundamentals_parquet": "data/datasets/fundamental_data/s_and_p_500_fundamentals.parquet",
+
+    "daily_features_csv": "data/datasets/daily_features/s_and_p_500_daily_features.csv",
+    "daily_features_parquet": "data/datasets/daily_features/s_and_p_500_daily_features.parquet"
   }
 }

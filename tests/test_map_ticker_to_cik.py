@@ -1,5 +1,5 @@
 """
-This module contains unit tests for the `map_ticker_to_cik` function in the `s_and_p_500_picker.map_ticker_to_cik` module.
+This module contains unit tests for the `map_ticker_to_cik` function in the `sp500_quantitative_dataset.map_ticker_to_cik` module.
 The tests use the `pytest` framework and the `mocker` fixture to mock the retrieval of S&P 500 companies and historical changes,
 as well as the loading of SEC and fallback JSON data. The tests verify that the function correctly maps tickers to CIKs,
 including current and historical tickers, and that it prints a warning for any tickers that are still missing CIKs after the
@@ -8,7 +8,7 @@ fallback process.
 
 import pytest
 import pandas as pd
-from s_and_p_500_picker.map_ticker_to_cik import map_ticker_to_cik
+from sp500_quantitative_dataset.map_ticker_to_cik import map_ticker_to_cik
 
 
 MOCK_CURRENT_COMPANIES = pd.DataFrame(
@@ -51,14 +51,14 @@ def test_map_ticker_to_cik_success(mocker):
     Test the map_ticker_to_cik function to ensure it correctly maps tickers to CIKs, including current and historical tickers.
     """
     mocker.patch(
-        "s_and_p_500_picker.map_ticker_to_cik.retrieve_s_and_p_500_companies",
+        "sp500_quantitative_dataset.map_ticker_to_cik.retrieve_companies",
         return_value=(MOCK_CURRENT_COMPANIES, MOCK_HISTORICAL_CHANGES),
     )
 
     mocker.patch("builtins.open", mocker.mock_open())
 
     mocker.patch(
-        "s_and_p_500_picker.map_ticker_to_cik.json.load",
+        "sp500_quantitative_dataset.map_ticker_to_cik.json.load",
         side_effect=[MOCK_SEC_JSON, MOCK_FALLBACK_JSON],
     )
 
@@ -83,14 +83,14 @@ def test_map_ticker_to_cik_missing_warning(mocker, capsys):
     Test the map_ticker_to_cik function to ensure it prints a warning for tickers that are still missing CIKs after the fallback process.
     """
     mocker.patch(
-        "s_and_p_500_picker.map_ticker_to_cik.retrieve_s_and_p_500_companies",
+        "sp500_quantitative_dataset.map_ticker_to_cik.retrieve_companies",
         return_value=(MOCK_CURRENT_COMPANIES, MOCK_HISTORICAL_CHANGES),
     )
 
     mocker.patch("builtins.open", mocker.mock_open())
 
     mocker.patch(
-        "s_and_p_500_picker.map_ticker_to_cik.json.load",
+        "sp500_quantitative_dataset.map_ticker_to_cik.json.load",
         side_effect=[MOCK_SEC_JSON, {}],
     )
 

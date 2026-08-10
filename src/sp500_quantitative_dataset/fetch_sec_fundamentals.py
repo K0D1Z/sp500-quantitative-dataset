@@ -114,7 +114,7 @@ def process_company_fundamentals(cik: str, ticker: str) -> pd.DataFrame:
     if not facts:
         return pd.DataFrame()
 
-    # THE MEGA DICTIONARY - "The Holy Grail of Fundamentals"
+    # THE MEGA DICTIONARY
     metrics_mapping = {
         # --- INCOME STATEMENT (Profitability & Growth) ---
         "Revenue": [
@@ -220,7 +220,7 @@ def generate_fundamentals_dataset() -> None:
     Saves outputs in both CSV and Parquet formats.
     """
     composition_path = config["paths"].get(
-        "daily_composition", "data/s_and_p_500_daily_composition.csv"
+        "daily_composition_csv", "data/s_and_p_500_daily_composition.csv"
     )
     csv_output_path = config["paths"].get(
         "fundamentals_csv", "data/s_and_p_500_fundamentals.csv"
@@ -266,6 +266,8 @@ def generate_fundamentals_dataset() -> None:
         time.sleep(0.2)
 
     if failed_sec_logs:
+        if failed_sec_path and os.path.dirname(failed_sec_path):
+            os.makedirs(os.path.dirname(failed_sec_path), exist_ok=True)
         with open(failed_sec_path, "w") as f:
             json.dump(failed_sec_logs, f, indent=4)
         print(f"-> Failed SEC fetches logged to {failed_sec_path}")
@@ -279,9 +281,13 @@ def generate_fundamentals_dataset() -> None:
         drop=True
     )
 
+    if csv_output_path and os.path.dirname(csv_output_path):
+        os.makedirs(os.path.dirname(csv_output_path), exist_ok=True)
     master_df.to_csv(csv_output_path, index=False)
     print(f"-> Fundamentals successfully saved to CSV: {csv_output_path}")
 
+    if parquet_output_path and os.path.dirname(parquet_output_path):
+        os.makedirs(os.path.dirname(parquet_output_path), exist_ok=True)
     master_df.to_parquet(parquet_output_path, index=False)
     print(f"-> Fundamentals successfully saved to Parquet: {parquet_output_path}")
 

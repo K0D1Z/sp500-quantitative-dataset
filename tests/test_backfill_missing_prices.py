@@ -3,8 +3,8 @@ import pandas as pd
 import json
 import os
 
-from s_and_p_500_picker import backfill_missing_prices as backfill_module
-from s_and_p_500_picker.backfill_missing_prices import (
+from sp500_quantitative_dataset import backfill_missing_prices as backfill_module
+from sp500_quantitative_dataset.backfill_missing_prices import (
     fetch_tiingo_data,
     backfill_missing_prices,
 )
@@ -68,7 +68,7 @@ MOCK_CONFIG = {
     "date_range": {"start_date": "2023-01-01", "end_date": "2023-01-03"},
     "paths": {
         "missing_tickers": "fake_missing.json",
-        "historical_prices": "fake_prices.csv",
+        "historical_prices_csv": "fake_prices.csv",
         "failed_tiingo_log": "fake_failed.json",
     },
 }

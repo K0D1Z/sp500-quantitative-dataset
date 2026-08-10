@@ -30,10 +30,13 @@ def download_historical_prices() -> None:
     """
     # 1. Setup paths
     composition_path = config["paths"].get(
-        "daily_composition", "data/s_and_p_500_daily_composition.csv"
+        "daily_composition_csv", "data/s_and_p_500_daily_composition.csv"
     )
-    prices_output_path = config["paths"].get(
-        "historical_prices", "data/s_and_p_500_prices.csv"
+    prices_output_path_csv = config["paths"].get(
+        "historical_prices_csv", "data/s_and_p_500_prices.csv"
+    )
+    prices_output_path_parquet = config["paths"].get(
+        "historical_prices_parquet", "data/s_and_p_500_prices.parquet"
     )
     missing_tickers_path = config["paths"].get(
         "missing_tickers", "data/missing_tickers.json"
@@ -103,7 +106,6 @@ def download_historical_prices() -> None:
 
     # 5. Flatten the data for easier use in backtesting
     print("\nFlattening and structuring data...")
-    # stack(level=1) moves Tickers from columns to rows, automatically dropping days with NaNs
     flat_data = data.stack(level=1).rename_axis(["Date", "Ticker"]).reset_index()
 
     # Directly remove rows without Close Price (clean dead companies)
@@ -117,11 +119,19 @@ def download_historical_prices() -> None:
     # Sort chronologically and by Ticker
     flat_data = flat_data.sort_values(by=["Date", "Ticker"]).reset_index(drop=True)
 
-    # 6. Save outputs
-    flat_data.to_csv(prices_output_path, index=False)
-    print(f"-> Historical prices saved to: {prices_output_path}")
+    # 6. Save outputs safely
+    if prices_output_path_csv and os.path.dirname(prices_output_path_csv):
+        os.makedirs(os.path.dirname(prices_output_path_csv), exist_ok=True)
+    flat_data.to_csv(prices_output_path_csv, index=False)
+    print(f"-> Historical prices saved to: {prices_output_path_csv}")
 
-    # Save missing tickers to JSON for our next steps
+    if prices_output_path_parquet and os.path.dirname(prices_output_path_parquet):
+        os.makedirs(os.path.dirname(prices_output_path_parquet), exist_ok=True)
+    flat_data.to_parquet(prices_output_path_parquet, index=False)
+    print(f"-> Historical prices saved to: {prices_output_path_parquet}")
+
+    if missing_tickers_path and os.path.dirname(missing_tickers_path):
+        os.makedirs(os.path.dirname(missing_tickers_path), exist_ok=True)
     with open(missing_tickers_path, "w") as f:
         json.dump(missing_tickers_log, f, indent=4)
     print(f"-> Missing tickers log (with CIKs) saved to: {missing_tickers_path}")

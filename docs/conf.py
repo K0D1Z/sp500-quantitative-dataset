@@ -11,10 +11,10 @@ sys.path.insert(0, os.path.abspath("../src"))
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'sp500-quantitative-dataset'
-copyright = '2026, Konrad Zatorski'
-author = 'Konrad Zatorski'
-release = '1.0.0'
+project = "sp500-quantitative-dataset"
+copyright = "2026, Konrad Zatorski"
+author = "Konrad Zatorski"
+release = "1.0.0"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -29,23 +29,22 @@ autodoc_mock_imports = [
 ]
 
 extensions = [
-    "sphinx.ext.autodoc",      
-    "sphinx.ext.napoleon",      
-    "sphinx.ext.viewcode",      
-    "sphinx.ext.intersphinx",   
-    "myst_parser",             
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.intersphinx",
+    "myst_parser",
 ]
 
-templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
-
+templates_path = ["_templates"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
-html_static_path = ['_static']
+html_theme = "alabaster"
+html_static_path = ["_static"]
 
 napoleon_google_docstring = True
 napoleon_numpy_docstring = True
