@@ -1,4 +1,4 @@
-# 📈 S&P 500 Quantitative Dataset & PIT Pipeline
+# ✦ S&P 500 Quantitative Dataset & PIT Pipeline
 
 > Publicly available data should never be behind a paywall—including public corporate data.
 
@@ -14,7 +14,7 @@
 
 ---
 
-## 🌟 Key Highlights & Architecture Features
+## ► Key Highlights & Architecture Features
 
 1. **Survivorship-Bias-Free Universe:** Reverse-engineers daily index composition from 2015 to present using current constituents and historical change logs. Includes delisted, acquired, and bankrupt companies (e.g., First Republic Bank, SVB).
 2. **Strict Point-in-Time (PIT) Matching:** Fundamentals are merged with market prices based on the official SEC **`Filing Date`** (via `pd.merge_asof`) rather than reporting period ends, completely eliminating **look-ahead bias** in backtesting.
@@ -27,7 +27,7 @@
 
 ---
 
-## 🚀 Getting Started
+## ► Getting Started
 
 ### Prerequisites
 
@@ -99,7 +99,7 @@ uv run python main.py
 
 ---
 
-## 🏗 Directory Structure
+## ► Directory Structure
 
 ```text
 sp500-quantitative-dataset/
@@ -155,7 +155,7 @@ sp500-quantitative-dataset/
 
 ---
 
-## 🗂 Data Dictionary & Handling Edge Cases
+## ► Data Dictionary & Handling Edge Cases
 
 The final dataset (`data/datasets/daily_features/s_and_p_500_daily_features.csv` / `.parquet`) consists of over **1.6+ million rows** and **45+ features**.
 
@@ -167,7 +167,7 @@ The final dataset (`data/datasets/daily_features/s_and_p_500_daily_features.csv`
 > 2. **Unreported Fields:** Certain corporations do not break out operational sub-metrics in their 10-K/10-Q SEC XBRL filings.
 > 3. **Market Delistings & Complex Corporate Restructuring:** A small minority of historical companies that bankrupted, rapidly merged, or liquidated prior to modernized XBRL disclosures may lack complete financial or pricing records—even after automated backfilling through Tiingo and SEC EDGAR APIs.
 
-### 🛠 Manual Extensibility for Unresolved Tickers
+### ► Manual Extensibility for Unresolved Tickers
 
 If specific delisted or historical entities fail automated retrieval via public APIs, the pipeline logs them directly into:
 
@@ -184,7 +184,7 @@ You can manually supply missing historical records by appending custom price row
 
 ---
 
-### ⚙️ Configuration Files and Hardcoded Data
+### ► Configuration Files and Hardcoded Data
 
 The project uses a configuration file located at `config/config.json`. You can modify the date range for the search and the paths to generated files within it.
 Check it out: [config.json](config/config.json)
@@ -204,7 +204,9 @@ The repository also utilizes [data/config/company_tickers.json](data/config/comp
 
 ---
 
-### 1. Market & Price Features (OHLCV)
+### ► Dataset Columns Description
+
+#### 1. Market & Price Features (OHLCV)
 
 | Column Name | Data Type | Description |
 | --- | --- | --- |
@@ -217,7 +219,7 @@ The repository also utilizes [data/config/company_tickers.json](data/config/comp
 | `Adj Close` | `float64` | Split and dividend-adjusted closing price ($). |
 | `Volume` | `float64` | Number of shares traded during the session. |
 
-### 2. Corporate Actions & Split Adjustments
+#### 2. Corporate Actions & Split Adjustments
 
 | Column Name | Data Type | Description |
 | --- | --- | --- |
@@ -226,7 +228,7 @@ The repository also utilizes [data/config/company_tickers.json](data/config/comp
 | `Split Shifted` | `float64` | Multiplier shifted backwards by 1 day to handle split-day execution. |
 | `Cum Split Factor` | `float64` | Cumulative product of historical split multipliers calculated backwards. |
 
-### 3. Point-in-Time SEC EDGAR Fundamentals (TTM Aggregated)
+#### 3. Point-in-Time SEC EDGAR Fundamentals (TTM Aggregated)
 
 | Column Name | Data Type | Description |
 | --- | --- | --- |
@@ -257,7 +259,7 @@ The repository also utilizes [data/config/company_tickers.json](data/config/comp
 | `Shares Outstanding (Basic)` | `float64` | Weighted average basic share count. |
 | `Shares Outstanding (Diluted)` | `float64` | Weighted average diluted share count. |
 
-### 4. Valuation Multiples & Technical Indicators
+#### 4. Valuation Multiples & Technical Indicators
 
 | Column Name | Data Type | Description |
 | --- | --- | --- |
@@ -274,7 +276,7 @@ The repository also utilizes [data/config/company_tickers.json](data/config/comp
 
 ---
 
-## 🧪 Running Unit & Integration Tests
+## ► Running Unit & Integration Tests
 
 The project uses `pytest` alongside `pytest-mock` to verify Point-in-Time logic, forward-fill mechanics, TTM rolling sum correctness, and rate-limit handling without firing external API calls.
 
@@ -287,7 +289,7 @@ uv run pytest
 
 ---
 
-## 📚 Documentation
+## ► Documentation
 
 Detailed code-level documentation, module API specifications, and architecture workflow diagrams are built using **Sphinx**.
 
@@ -310,7 +312,7 @@ uv run python -m http.server --directory docs/_build/html 8000
 
 ---
 
-## 💻 Quick Code Usage Example
+## ► Quick Code Usage Example
 
 Loading the dataset using **Pandas** or **Polars** to analyze historical valuation multiples with conditional filtering:
 
