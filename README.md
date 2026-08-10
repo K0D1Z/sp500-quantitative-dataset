@@ -13,16 +13,9 @@
 **Survivorship-Bias-Free**, and **Point-in-Time (PIT)** daily financial dataset of the S&P 500 index. This project reverse-engineers the daily historical index constituents, extracts raw US-GAAP XBRL fundamentals directly from SEC EDGAR, computes TTM (Trailing Twelve Months) flow metrics, incorporates split adjustments, and generates machine-learning-ready technical features.
 
 ---
-
-<<<<<<< HEAD
-## ► Key Highlights & Architecture Features
-=======
 ![logo](img/logo.png)
-
 ---
-
-## 🌟 Key Highlights & Architecture Features
->>>>>>> 99d1175 (docs: update README)
+## ► Key Highlights & Architecture Features
 
 1. **Survivorship-Bias-Free Universe:** Reverse-engineers daily index composition from 2015 to present using current constituents and historical change logs. Includes delisted, acquired, and bankrupt companies (e.g., First Republic Bank, SVB).
 2. **Strict Point-in-Time (PIT) Matching:** Fundamentals are merged with market prices based on the official SEC **`Filing Date`** (via `pd.merge_asof`) rather than reporting period ends, completely eliminating **look-ahead bias** in backtesting.
