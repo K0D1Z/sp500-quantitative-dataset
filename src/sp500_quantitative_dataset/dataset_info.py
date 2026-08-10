@@ -5,6 +5,7 @@ A simple script to check the statistics of the resulting csv file.
 import pandas as pd
 
 from sp500_quantitative_dataset import config
+
 composition_path = config["paths"].get(
     "daily_features_parquet", "data/s_and_p_500_daily_features.parquet"
 )

@@ -337,7 +337,6 @@ print(
         ["Date", "Close", "Market Cap", "P/E Ratio", "RSI_14", "Volatility_30D"]
     ].head()
 )
-
 ```
 
 ---

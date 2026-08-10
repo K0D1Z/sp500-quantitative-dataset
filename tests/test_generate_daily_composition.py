@@ -65,7 +65,7 @@ def test_generate_daily_composition(mocker):
     mocker.patch("os.makedirs")
     mocker.patch.object(pd.DataFrame, "to_csv")
     mocker.patch.object(pd.DataFrame, "to_parquet")
-    
+
     result_df = generate_daily_composition()
 
     assert isinstance(result_df, pd.DataFrame)
