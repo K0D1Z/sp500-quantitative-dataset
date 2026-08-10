@@ -1,0 +1,92 @@
+[
+    {
+        "Ticker": "ACE",
+        "CIK": "0000896159",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "ADS",
+        "CIK": "0001101215",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "APC",
+        "CIK": "0002080921",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "ESV",
+        "CIK": "0000314808",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "FDXF",
+        "CIK": "0002082247",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "GPS",
+        "CIK": "0000039911",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "HONA",
+        "CIK": "0002089271",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "MNK",
+        "CIK": "0001567892",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "NFX",
+        "CIK": "0000912750",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "SPLS",
+        "CIK": "0000791519",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "TYC",
+        "CIK": "0000833444",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "ENDP",
+        "CIK": "0001593034",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "WLTW",
+        "CIK": "0001140536",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "FBHS",
+        "CIK": "0001519751",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "RE",
+        "CIK": "0001095073",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "HFC",
+        "CIK": "0000048039",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "FRC",
+        "CIK": "0001132979",
+        "Reason": "Tiingo returned 404 or empty data"
+    },
+    {
+        "Ticker": "CDAY",
+        "CIK": "0001725057",
+        "Reason": "Tiingo returned 404 or empty data"
+    }
+]

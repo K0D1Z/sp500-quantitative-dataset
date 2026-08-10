@@ -1,0 +1,77 @@
+[
+    {
+        "Ticker": "ANDV",
+        "CIK": "0000088048",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "BHI",
+        "CIK": "0000008080",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "ESRX",
+        "CIK": "0001533276",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "LVLT",
+        "CIK": "0001042121",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "PBCT",
+        "CIK": "0001339191",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "POM",
+        "CIK": "0001877971",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "SE",
+        "CIK": "0001703399",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "XEC",
+        "CIK": "0001167888",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "CSRA",
+        "CIK": "0001648930",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "EVHC",
+        "CIK": "0001573198",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "INFO",
+        "CIK": "0001592086",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "ABMD",
+        "CIK": "0000081509",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "WCG",
+        "CIK": "0001275811",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "FRC",
+        "CIK": "0001132979",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    },
+    {
+        "Ticker": "SBNY",
+        "CIK": "0001288784",
+        "Reason": "SEC returned 404 or lacked USD XBRL tags"
+    }
+]

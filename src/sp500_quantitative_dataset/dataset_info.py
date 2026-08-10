@@ -3,13 +3,13 @@ A simple script to check the statistics of the resulting csv file.
 """
 
 import pandas as pd
-import json
 
-config = json.load(open("config/config.json", "r"))
+from sp500_quantitative_dataset import config
 composition_path = config["paths"].get(
-    "daily_features_csv", "data/s_and_p_500_daily_features.csv"
+    "daily_features_parquet", "data/s_and_p_500_daily_features.parquet"
 )
-df = pd.read_csv(composition_path)
+
+df = pd.read_parquet(composition_path)
 pd.options.display.max_columns = None
 pd.options.display.max_rows = None
 

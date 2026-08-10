@@ -85,6 +85,7 @@ def test_generate_corporate_events(mocker):
         return_value=(MOCK_CURRENT, MOCK_HISTORICAL_CHANGES),
     )
 
+    mocker.patch("os.makedirs")
     mocker.patch.object(pd.DataFrame, "to_csv")
     mocker.patch.object(pd.DataFrame, "to_parquet")
 

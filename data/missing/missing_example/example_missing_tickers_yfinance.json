@@ -1,0 +1,607 @@
+[
+    {
+        "Ticker": "ACE",
+        "CIK": "0000896159",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ADS",
+        "CIK": "0001101215",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "AGN",
+        "CIK": "0001578845",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ALTR",
+        "CIK": "0000768251",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ALXN",
+        "CIK": "0000899866",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "APC",
+        "CIK": "0002080921",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ARG",
+        "CIK": "0000804212",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "AVP",
+        "CIK": "0000008868",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "BCR",
+        "CIK": "0000009892",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "BHI",
+        "CIK": "0000008080",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "BRCM",
+        "CIK": "0001054374",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CA",
+        "CIK": "0000356028",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CELG",
+        "CIK": "0000816284",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CERN",
+        "CIK": "0000804753",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CFN",
+        "CIK": "0001457543",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CHK",
+        "CIK": "0000895126",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CMA",
+        "CIK": "0000028412",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "COV",
+        "CIK": "0001385187",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CSC",
+        "CIK": "0000023082",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CTXS",
+        "CIK": "0000877890",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CVC",
+        "CIK": "0001053112",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DFS",
+        "CIK": "0001393612",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DISCA",
+        "CIK": "0001437107",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DISCK",
+        "CIK": "0001437107",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DNB",
+        "CIK": "0001115222",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DNR",
+        "CIK": "0000945764",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DO",
+        "CIK": "0000949039",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DPS",
+        "CIK": "0001418135",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DTV",
+        "CIK": "0001465112",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ESV",
+        "CIK": "0000314808",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ETFC",
+        "CIK": "0001015780",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "FDO",
+        "CIK": "0000034408",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "FDXF",
+        "CIK": "0002082247",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "FLIR",
+        "CIK": "0000354908",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "FTR",
+        "CIK": "0000020520",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "GAS",
+        "CIK": "0001004155",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "GGP",
+        "CIK": "0001496048",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "GMCR",
+        "CIK": "0000909954",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "GPS",
+        "CIK": "0000039911",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "HCBK",
+        "CIK": "0000921847",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "HES",
+        "CIK": "0000004447",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "HONA",
+        "CIK": "0002089271",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "HSP",
+        "CIK": "0001274057",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "IPG",
+        "CIK": "0000051644",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "JNPR",
+        "CIK": "0001043604",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "JOY",
+        "CIK": "0000801898",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "JWN",
+        "CIK": "0000073020",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "K",
+        "CIK": "0000055067",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "KRFT",
+        "CIK": "0001545158",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "KSU",
+        "CIK": "0000054480",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "LLL",
+        "CIK": "0001039101",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "LLTC",
+        "CIK": "0000791907",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "LM",
+        "CIK": "0000704051",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "LO",
+        "CIK": "0001424847",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "LVLT",
+        "CIK": "0001042121",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "MJN",
+        "CIK": "0001452575",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "MNK",
+        "CIK": "0001567892",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "MON",
+        "CIK": "0001110783",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "MRO",
+        "CIK": "0000101778",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "NBL",
+        "CIK": "0000072207",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "NFX",
+        "CIK": "0000912750",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "NLSN",
+        "CIK": "0001492633",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "PBCT",
+        "CIK": "0001339191",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "PCP",
+        "CIK": "0000079958",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "PDCO",
+        "CIK": "0000892482",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "PETM",
+        "CIK": "0000863157",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "PLL",
+        "CIK": "0000075829",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "PXD",
+        "CIK": "0001038357",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "QEP",
+        "CIK": "0001108827",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "RAI",
+        "CIK": "0001275283",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "RHT",
+        "CIK": "0001087423",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "RTN",
+        "CIK": "0001047122",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "SEE",
+        "CIK": "0001012100",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "SIAL",
+        "CIK": "0000090185",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "SNI",
+        "CIK": "0001430602",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "SPLS",
+        "CIK": "0000791519",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "SRCL",
+        "CIK": "0000861878",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "STJ",
+        "CIK": "0000203077",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "SWN",
+        "CIK": "0000007332",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "SWY",
+        "CIK": "0000086144",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "TGNA",
+        "CIK": "0000039899",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "TIF",
+        "CIK": "0000098246",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "TSS",
+        "CIK": "0000721683",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "TWC",
+        "CIK": "0001377013",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "TYC",
+        "CIK": "0000833444",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "VAR",
+        "CIK": "0001094093",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "VIAB",
+        "CIK": "0001339947",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "WBA",
+        "CIK": "0001618921",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "WFM",
+        "CIK": "0000865436",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "WIN",
+        "CIK": "0001282266",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "WYN",
+        "CIK": "0001361658",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "XEC",
+        "CIK": "0001167888",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "XL",
+        "CIK": "0000875159",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "XLNX",
+        "CIK": "0000743988",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "YHOO",
+        "CIK": "0001011006",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ENDP",
+        "CIK": "0001593034",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "HBI",
+        "CIK": "0001359841",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "BXLT",
+        "CIK": "0001620546",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CPGX",
+        "CIK": "0001629995",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ATVI",
+        "CIK": "0000718877",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CMCSK",
+        "CIK": "0001166691",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "WLTW",
+        "CIK": "0001140536",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CXO",
+        "CIK": "0001358071",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "FL",
+        "CIK": "0000850209",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "FBHS",
+        "CIK": "0001519751",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ARNC",
+        "CIK": "0000004281",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DISH",
+        "CIK": "0001001039",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ANSS",
+        "CIK": "0001013462",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "RE",
+        "CIK": "0001095073",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DRE",
+        "CIK": "0000783280",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "DWDP",
+        "CIK": "0001666700",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "SIVB",
+        "CIK": "0000719739",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "ABMD",
+        "CIK": "0000081509",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "TWTR",
+        "CIK": "0001418091",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "HFC",
+        "CIK": "0000048039",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "FLT",
+        "CIK": "0001175454",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "WCG",
+        "CIK": "0001275811",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "MXIM",
+        "CIK": "0000743316",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "FRC",
+        "CIK": "0001132979",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CTLT",
+        "CIK": "0001596783",
+        "Reason": "Not found in yfinance (likely delisted)"
+    },
+    {
+        "Ticker": "CDAY",
+        "CIK": "0001725057",
+        "Reason": "Not found in yfinance (likely delisted)"
+    }
+]

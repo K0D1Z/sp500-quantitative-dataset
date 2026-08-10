@@ -1,5 +1,5 @@
-
 # 📈 S&P 500 Quantitative Dataset & PIT Pipeline
+
 > Publicly available data should never be behind a paywall—including public corporate data.
 
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
@@ -7,8 +7,6 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?logo=docker&logoColor=white)](https://www.docker.com/)
 [![Managed with uv](https://img.shields.io/badge/Package_Manager-uv-de5b43.svg)](https://github.com/astral-sh/uv)
 [![Tests: Pytest](https://img.shields.io/badge/Tests-Pytest-0A9EDC.svg?logo=pytest&logoColor=white)](https://docs.pytest.org/)
-
-
 [![Data Source: SEC EDGAR](https://img.shields.io/badge/Data_Source-SEC_EDGAR-003366.svg)](https://www.sec.gov/edgar)
 [![Data Source: yfinance](https://img.shields.io/badge/Data_Source-yfinance-6001D2.svg?logo=yahoo&logoColor=white)](https://github.com/ranaroussi/yfinance)
 [![Data Source: Tiingo API](https://img.shields.io/badge/Data_Source-Tiingo_API-028090.svg)](https://api.tiingo.com/)
@@ -36,43 +34,51 @@
 ```text
 sp500-quantitative-dataset/
 ├── config/
-│   ├── config.json             # Date range, file paths, and runtime settings
-│   └── fallback_ciks.json      # Hardcoded CIK lookup for historical delisted tickers
-├── data/                       # Local volume directory for generated datasets
-│   ├── s_and_p_500_daily_composition.csv
-│   ├── s_and_p_500_events.csv
-│   ├── s_and_p_500_prices.csv
-│   ├── s_and_p_500_fundamentals.csv
-│   ├── s_and_p_500_daily_features.csv
-│   ├── s_and_p_500_daily_features.parquet
-│   ├── failed_tiingo.json      # Log of missing price tickers for manual backfill
-│   └── failed_sec_fundamentals.json # Log of missing SEC CIKs for manual backfill
-├── docs/                       # Sphinx documentation source files & builds
+│   ├── config.json                     # Main pipeline configuration (date ranges, file paths)
+│   └── example_config.json             # Backup template configuration
+├── data/                               # Local volume directory for generated datasets
+│   ├── config/
+│   │   ├── company_tickers.json        # SEC company tickers mapping
+│   │   └── fallback_ciks.json          # Manual fallback CIK lookup for historical entities
+│   ├── datasets/
+│   │   ├── daily_composition/          # Reconstructed daily constituent logs (.csv & .parquet)
+│   │   ├── daily_features/             # Final PIT merged features (.csv & .parquet)
+│   │   ├── events/                     # Categorized corporate events ledger (.csv & .parquet)
+│   │   ├── fundamental_data/           # SEC EDGAR XBRL fundamentals (.csv & .parquet)
+│   │   └── historical_prices/          # Cleaned market price series (.csv & .parquet)
+│   └── missing/
+│       ├── missing_example/            # Sample logs for missing data
+│       ├── missing_sec_fundamentals.json
+│       ├── missing_tickers_tiingo.json
+│       └── missing_tickers_yfinance.json
+├── docs/                               # Sphinx documentation source files & builds
 ├── src/
-│   └── s_and_p_500_picker/
+│   └── sp500_quantitative_dataset/
 │       ├── __init__.py
-│       ├── retrieve_s_and_p_500_companies.py # Scrapes current universe + changes from Wiki
-│       ├── map_ticker_to_cik.py            # Resolves Ticker -> CIK cross-walk
-│       ├── generate_s_and_p_500_daily_composition.py # Reconstructs historic index
-│       ├── generate_corporate_events.py    # Classifies M&A, bankruptcies, spin-offs
-│       ├── download_historical_prices.py   # Bulk fetches yfinance prices
-│       ├── backfill_missing_prices.py      # Resilient Tiingo API backfill (Batching)
-│       ├── fetch_sec_fundamentals.py       # Scrapes XBRL facts from SEC EDGAR API
-│       └── feature_engineering.py          # Point-in-Time merge, TTM, Ratios & Technicals
-├── tests/                      # Full pytest suite with mocks
-│   ├── test_feature_engineering.py
+│       ├── backfill_missing_prices.py  # Resilient Tiingo API price backfill
+│       ├── config_loader.py            # Centralized config path resolver
+│       ├── dataset_info.py             # A simple script to check the integrity of the final dataset.
+│       ├── download_historical_prices.py # Bulk market price scraper (yfinance)
+│       ├── feature_engineering.py     # PIT merge, TTM, valuation & technicals
+│       ├── fetch_sec_fundamentals.py  # SEC EDGAR XBRL fundamentals parser
+│       ├── generate_corporate_events.py # M&A, spin-off & bankruptcy classifier
+│       ├── generate_daily_composition.py # Dynamic daily index reconstruction
+│       ├── map_ticker_to_cik.py       # Ticker -> SEC CIK cross-walk resolver
+│       └── retrieve_companies.py      # Wikipedia index scraper & changes parser
+├── tests/                              # Complete pytest suite with mocks
 │   ├── test_backfill_missing_prices.py
 │   ├── test_download_historical_prices.py
+│   ├── test_feature_engineering.py
 │   ├── test_fetch_sec_fundamentals.py
 │   ├── test_generate_corporate_events.py
-│   ├── test_generate_s_and_p_500_daily_composition.py
-│   ├── test_retrieve_s_and_p_500_companies.py
-│   └── test_map_ticker_to_cik.py
-├── .env.example                # Example environment variables template
-├── docker-compose.yml          # Container orchestration setup
-├── Dockerfile                  # Hermetic multi-stage build image definition
-├── main.py                     # Main execution pipeline entry point
-├── pyproject.toml              # UV / PEP 621 package requirements
+│   ├── test_generate_daily_composition.py
+│   ├── test_map_ticker_to_cik.py
+│   └── test_retrieve_companies.py
+├── .env.example                        # Environment variables template
+├── docker-compose.yml                  # Container orchestration setup
+├── Dockerfile                          # Hermetic multi-stage build image definition
+├── main.py                             # Main execution pipeline entry point
+├── pyproject.toml                      # UV / PEP 621 package requirements
 └── README.md
 
 ```
@@ -81,7 +87,7 @@ sp500-quantitative-dataset/
 
 ## 🗂 Data Dictionary & Handling Edge Cases
 
-The final dataset (`s_and_p_500_daily_features.csv` / `.parquet`) consists of over **1.6+ million rows** and **45+ features**.
+The final dataset (`data/datasets/daily_features/s_and_p_500_daily_features.csv` / `.parquet`) consists of over **1.6+ million rows** and **45+ features**.
 
 > [!IMPORTANT]
 > **Downstream Programmatic Handling Required (`NaN` Values)**
@@ -89,7 +95,7 @@ The final dataset (`s_and_p_500_daily_features.csv` / `.parquet`) consists of ov
 > Reasons for missing data include:
 > 1. **Industry-Specific Accounting (US-GAAP):** Financial Institutions & Banks (e.g., JPMorgan, Bank of America) do not report *Cost of Revenue* or *Gross Profit*. Non-tech firms rarely disclose *R&D Expenses*.
 > 2. **Unreported Fields:** Certain corporations do not break out operational sub-metrics in their 10-K/10-Q SEC XBRL filings.
-> 3. **Market Delistings & Complex Corporate Restructuring:** A small minority of historical companies that bankrupt, rapidly merged, or liquidated prior to modernized XBRL disclosures may lack complete financial or pricing records—even after automated backfilling through Tiingo and SEC EDGAR APIs.
+> 3. **Market Delistings & Complex Corporate Restructuring:** A small minority of historical companies that bankrupted, rapidly merged, or liquidated prior to modernized XBRL disclosures may lack complete financial or pricing records—even after automated backfilling through Tiingo and SEC EDGAR APIs.
 > 
 > 
 
@@ -97,10 +103,36 @@ The final dataset (`s_and_p_500_daily_features.csv` / `.parquet`) consists of ov
 
 If specific delisted or historical entities fail automated retrieval via public APIs, the pipeline logs them directly into:
 
-* `data/failed_tiingo.json` *(for missing historical market price series)*
-* `data/failed_sec_fundamentals.json` *(for missing SEC CIKs or financial filings)*
+* `data/missing/missing_tickers_tiingo.json` *(for missing historical market price series)*
+* `data/missing/missing_sec_fundamentals.json` *(for missing SEC CIKs or financial filings)*
 
-You can manually supply missing historical records by appending custom price rows directly to `data/s_and_p_500_prices.csv` or mapping custom CIKs inside `config/fallback_ciks.json`. The pipeline's merge and feature engineering modules will automatically ingest and process these manual overrides.
+You can manually supply missing historical records by appending custom price rows directly to `data/datasets/historical_prices/s_and_p_500_prices.csv` or mapping custom CIKs inside `data/config/fallback_ciks.json`. The pipeline's merge and feature engineering modules will automatically ingest and process these manual overrides.
+
+> [!NOTE]
+> Check out example missing data logs:
+> * Missing OHLCV data for tickers after fetching from Yahoo Finance API: [example_missing_tickers_yfinance.json](data/missing/missing_example/example_missing_tickers_yfinance.json)
+> * Missing OHLCV data for remaining tickers after fetching from Tiingo API: [example_missing_tickers_tiingo.json](data/missing/missing_example/example_missing_tickers_tiingo.json)
+> * Missing SEC fundamental data: [example_missing_sec_fundamentals.json](data/missing/missing_example/example_missing_sec_fundamentals.json)
+
+---
+
+### ⚙️ Configuration Files and Hardcoded Data
+
+The project uses a configuration file located at `config/config.json`. You can modify the date range for the search and the paths to generated files within it.
+Check it out: [config.json](config/config.json)
+
+> [!TIP]
+> After changing the project configuration, you can return to the original configuration using the `example_config.json` file.
+> Check it out: [example_config.json](config/example_config.json)
+
+The repository also utilizes [data/config/company_tickers.json](config/company_tickers.json) and [data/config/fallback_ciks.json](data/config/fallback_ciks.json) files—the former downloaded from SEC EDGAR, the latter artificially created and verified for historical delisted tickers.
+
+* Source for company tickers: https://www.sec.gov/files/company_tickers.json
+* Source for SEC Central Index Keys: https://www.sec.gov
+
+> [!NOTE]
+> I used Gemini 3.6 Flash and Claude Sonnet 5 to search the SEC dataset and then manually checked each entry, searching available sources.
+> If you encounter any errors, please do not hesitate to contact me or create a Pull Request.
 
 ---
 
@@ -174,22 +206,6 @@ You can manually supply missing historical records by appending custom price row
 
 ---
 
-## 📚 Documentation
-
-Detailed code-level documentation, module API specifications, and architecture workflow diagrams are built using **Sphinx**.
-
-The documentation source files are housed under the `docs/` directory. *(Sphinx documentation setup and HTML generation pipeline are currently work-in-progress).*
-
-To build the HTML documentation locally once configured:
-
-```bash
-cd docs
-make html
-
-```
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -204,7 +220,7 @@ make html
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/sp500-quantitative-dataset.git
+git clone [git@github.com:K0D1Z/sp500-quantitative-dataset.git](git@github.com:K0D1Z/sp500-quantitative-dataset.git)
 cd sp500-quantitative-dataset
 
 ```
@@ -233,7 +249,7 @@ docker compose up --build
 1. **Install `uv` (Fast Python package installer):**
 
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
+curl -LsSf [https://astral.sh/uv/install.sh](https://astral.sh/uv/install.sh) | sh
 
 ```
 
@@ -273,6 +289,29 @@ uv run pytest
 
 ---
 
+## 📚 Documentation
+
+Detailed code-level documentation, module API specifications, and architecture workflow diagrams are built using **Sphinx**.
+
+The documentation source files are housed under the `docs/` directory.
+
+To build and view the HTML documentation locally:
+
+```bash
+# Generate HTML build using uv
+uv run sphinx-build -b html docs docs/_build/html
+
+```
+
+Then open `docs/_build/html/index.html` in any web browser, or serve it locally using Python:
+
+```bash
+uv run python -m http.server --directory docs/_build/html 8000
+
+```
+
+---
+
 ## 💻 Quick Code Usage Example
 
 Loading the dataset using **Pandas** or **Polars** to analyze historical valuation multiples with conditional filtering:
@@ -281,7 +320,7 @@ Loading the dataset using **Pandas** or **Polars** to analyze historical valuati
 import pandas as pd
 
 # Load final parquet file
-df = pd.read_parquet("data/s_and_p_500_daily_features.parquet")
+df = pd.read_parquet("data/datasets/daily_features/s_and_p_500_daily_features.parquet")
 
 # Filter for Apple Inc. (AAPL) in 2023
 aapl = df[(df["Ticker"] == "AAPL") & (df["Date"] >= "2023-01-01")]
@@ -296,6 +335,7 @@ print(
         ["Date", "Close", "Market Cap", "P/E Ratio", "RSI_14", "Volatility_30D"]
     ].head()
 )
+
 ```
 
 ---

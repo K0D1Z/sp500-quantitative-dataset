@@ -11,7 +11,10 @@ from sp500_quantitative_dataset.generate_daily_composition import (
 
 MOCK_CONFIG = {
     "date_range": {"start_date": "2023-01-01", "end_date": "2023-01-03"},
-    "paths": {"daily_composition": "fake_path.csv"},
+    "paths": {
+        "daily_composition_csv": "fake_composition.csv",
+        "daily_composition_parquet": "fake_composition.parquet",
+    },
 }
 
 MOCK_CURRENT_COMPANIES = pd.DataFrame(
@@ -59,6 +62,10 @@ def test_generate_daily_composition(mocker):
         return_value=MOCK_CIK_MAPPING,
     )
 
+    mocker.patch("os.makedirs")
+    mocker.patch.object(pd.DataFrame, "to_csv")
+    mocker.patch.object(pd.DataFrame, "to_parquet")
+    
     result_df = generate_daily_composition()
 
     assert isinstance(result_df, pd.DataFrame)
