@@ -128,7 +128,7 @@ sp500-quantitative-dataset/
 ├── notebooks/
     ├── guide.ipynb                     # A simple guide for Kaggle users
     ├── eda.ipynb                       # Comprehensive Exploratory Data Analysis on the resulting dataset
-│   └── sample_data_visualization.ipynb # A simple notebook for visualizing sample stock data (for specific ticker)
+│   └── analyze_dataset.ipynb           # Visualize and analyze data (for specific ticker)
 ├── src/
 │   └── sp500_quantitative_dataset/
 │       ├── __init__.py

@@ -11,11 +11,14 @@ dependencies = [
     "fastparquet>=2026.5.0",
     "lxml>=6.1.1",
     "matplotlib>=3.11.1",
+    "nbformat>=5.11.0",
     "pandas>=3.0.5",
+    "plotly>=6.9.0",
     "pyarrow>=25.0.0",
     "requests>=2.34.2",
     "seaborn>=0.13.2",
     "sphinx>=9.1.0",
+    "ta>=0.11.0",
     "yfinance>=1.5.2",
 ]
 
