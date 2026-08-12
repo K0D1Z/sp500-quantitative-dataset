@@ -125,6 +125,10 @@ sp500-quantitative-dataset/
 │       ├── missing_tickers_tiingo.json
 │       └── missing_tickers_yfinance.json
 ├── docs/                               # Sphinx documentation source files & builds
+├── notebooks/
+    ├── guide.ipynb                     # A simple guide for Kaggle users
+    ├── eda.ipynb                       # Comprehensive Exploratory Data Analysis on the resulting dataset
+│   └── sample_data_visualization.ipynb # A simple notebook for visualizing sample stock data (for specific ticker)
 ├── src/
 │   └── sp500_quantitative_dataset/
 │       ├── __init__.py
@@ -132,12 +136,12 @@ sp500-quantitative-dataset/
 │       ├── config_loader.py            # Centralized config path resolver
 │       ├── dataset_info.py             # A simple script to check the integrity of the final dataset.
 │       ├── download_historical_prices.py # Bulk market price scraper (yfinance)
-│       ├── feature_engineering.py     # PIT merge, TTM, valuation & technicals
-│       ├── fetch_sec_fundamentals.py  # SEC EDGAR XBRL fundamentals parser
+│       ├── feature_engineering.py      # PIT merge, TTM, valuation & technicals
+│       ├── fetch_sec_fundamentals.py   # SEC EDGAR XBRL fundamentals parser
 │       ├── generate_corporate_events.py # M&A, spin-off & bankruptcy classifier
 │       ├── generate_daily_composition.py # Dynamic daily index reconstruction
-│       ├── map_ticker_to_cik.py       # Ticker -> SEC CIK cross-walk resolver
-│       └── retrieve_companies.py      # Wikipedia index scraper & changes parser
+│       ├── map_ticker_to_cik.py        # Ticker -> SEC CIK cross-walk resolver
+│       └── retrieve_companies.py       # Wikipedia index scraper & changes parser
 ├── tests/                              # Complete pytest suite with mocks
 │   ├── test_backfill_missing_prices.py
 │   ├── test_download_historical_prices.py
