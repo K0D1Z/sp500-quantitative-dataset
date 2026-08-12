@@ -159,7 +159,6 @@ def backfill_missing_prices() -> None:
                 else:
                     combined = temp_new_data
 
-                # Zabezpieczenie katalogu przed zapisem tymczasowym
                 if os.path.dirname(prices_output_path):
                     os.makedirs(os.path.dirname(prices_output_path), exist_ok=True)
 
@@ -170,7 +169,6 @@ def backfill_missing_prices() -> None:
         else:
             time.sleep(0.1)
 
-    # Zapis logów nieudanych próśb z tworzeniem katalogu
     if failed_logs:
         if os.path.dirname(failed_tiingo_path):
             os.makedirs(os.path.dirname(failed_tiingo_path), exist_ok=True)
@@ -195,7 +193,6 @@ def backfill_missing_prices() -> None:
         drop=True
     )
 
-    # Zabezpieczenie katalogu przed końcowym zapisem CSV
     if os.path.dirname(prices_output_path):
         os.makedirs(os.path.dirname(prices_output_path), exist_ok=True)
 
