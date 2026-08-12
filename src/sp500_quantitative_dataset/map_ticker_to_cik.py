@@ -10,8 +10,9 @@ process and prints a warning message with the list of those tickers, indicating 
 NOTE: CIKs fallback JSON file was written manually and verified using Gemini 3.6 Flash and Claude Sonnet 5 (checked manually as well)
 """
 
-import pandas as pd
+import os
 import json
+import pandas as pd
 from sp500_quantitative_dataset import config
 from sp500_quantitative_dataset.retrieve_companies import (
     retrieve_companies,
@@ -32,12 +33,15 @@ def map_ticker_to_cik() -> pd.DataFrame:
     sec_path = config["paths"]["company_tickers"]
     fallback_path = config["paths"]["fallback_ciks"]
 
+    # Load SEC company tickers JSON file
     with open(sec_path, "r") as file:
         sec_json = json.load(file)
 
+    # Load local fallback CIKs JSON file
     with open(fallback_path, "r") as file:
         fallback_ciks_raw = json.load(file)
 
+    # Flatten fallback CIK dictionary
     fallback_ciks = {ticker: data["CIK"] for ticker, data in fallback_ciks_raw.items()}
 
     # Create a DataFrame from the SEC JSON data and rename columns for consistency
@@ -47,7 +51,7 @@ def map_ticker_to_cik() -> pd.DataFrame:
     )
     sec_tickers["CIK"] = sec_tickers["CIK"].astype(str).str.zfill(10)
 
-    # Retrieve current S&P 500 companies and historical changes
+    # Retrieve current S&P 500 companies and historical changes from Wikipedia
     current_companies, historical_changes = retrieve_companies()
     current_companies = current_companies.rename(
         columns={"Symbol": "Ticker", "Security": "Company Name"}
@@ -55,17 +59,51 @@ def map_ticker_to_cik() -> pd.DataFrame:
     current_companies["CIK"] = current_companies["CIK"].astype(str).str.zfill(10)
     current_base = current_companies[["Ticker", "CIK", "Company Name"]].copy()
 
-    # Process historical changes to extract removed tickers and their corresponding CIKs
-    removed_df = historical_changes[["Removed Ticker", "Removed Company Name"]].copy()
-    removed_df = removed_df.dropna(subset=["Removed Ticker"]).drop_duplicates(
-        subset=["Removed Ticker"]
-    )
-    removed_df = removed_df.rename(
-        columns={
-            "Removed Ticker": "Ticker",
-            "Removed Company Name": "Wiki Company Name",
-        }
-    )
+    # Handle MultiIndex columns or structural schema changes if returned from Wikipedia
+    if historical_changes is not None and not historical_changes.empty:
+        if isinstance(historical_changes.columns, pd.MultiIndex):
+            historical_changes.columns = [
+                '_'.join([str(c) for c in col if str(c) != 'nan']).strip() 
+                for col in historical_changes.columns.values
+            ]
+        else:
+            historical_changes.columns = [str(c).strip() for c in historical_changes.columns]
+
+        # Dynamically map headers to standard expected names
+        col_mapping = {}
+        for col in historical_changes.columns:
+            col_str = str(col).lower()
+            if 'date' in col_str:
+                col_mapping[col] = 'Date'
+            elif ('rem' in col_str) and ('ticker' in col_str or 'symbol' in col_str):
+                col_mapping[col] = 'Removed Ticker'
+            elif ('rem' in col_str) and ('company' in col_str or 'name' in col_str or 'security' in col_str):
+                col_mapping[col] = 'Removed Company Name'
+            elif ('add' in col_str) and ('ticker' in col_str or 'symbol' in col_str):
+                col_mapping[col] = 'Added Ticker'
+                
+        historical_changes = historical_changes.rename(columns=col_mapping)
+
+    # Ensure required columns exist to prevent KeyError
+    if historical_changes is not None:
+        if "Removed Ticker" not in historical_changes.columns:
+            historical_changes["Removed Ticker"] = None
+        if "Removed Company Name" not in historical_changes.columns:
+            historical_changes["Removed Company Name"] = None
+
+        # Process historical changes to extract removed tickers and their corresponding CIKs
+        removed_df = historical_changes[["Removed Ticker", "Removed Company Name"]].copy()
+        removed_df = removed_df.dropna(subset=["Removed Ticker"]).drop_duplicates(
+            subset=["Removed Ticker"]
+        )
+        removed_df = removed_df.rename(
+            columns={
+                "Removed Ticker": "Ticker",
+                "Removed Company Name": "Wiki Company Name",
+            }
+        )
+    else:
+        removed_df = pd.DataFrame(columns=["Ticker", "Wiki Company Name"])
 
     # Filter out any removed tickers that are still present in the current S&P 500 composition
     removed_df = removed_df[~removed_df["Ticker"].isin(current_base["Ticker"])]
@@ -105,5 +143,5 @@ def map_ticker_to_cik() -> pd.DataFrame:
 
 if __name__ == "__main__":
     mapping_df = map_ticker_to_cik()
-    print(mapping_df.sample(10))
+    print(mapping_df.sample(min(10, len(mapping_df))))
     print(f"Total unique tickers mapped: {mapping_df['Ticker'].nunique()}")

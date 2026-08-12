@@ -98,6 +98,7 @@ uv run python main.py
 ```
 > [!IMPORTANT]
 > Due to Tiingo's API hourly limits, executing a script on the free plan can take 2-3 hours. If you want to speed up your script, consider purchasing a monthly premium plan with Tiingo. Alternatively, you can purchase monthly API access for a more comprehensive dataset. It's up to you :)
+> If pipeline Step 1 isn't working correctly, it likely means the external site's structure has changed. Please contact me if this happens, as I'll need to update the link or selectors.
 
 ---
 
