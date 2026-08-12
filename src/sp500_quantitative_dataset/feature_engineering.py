@@ -8,6 +8,7 @@ import os
 import pandas as pd
 import numpy as np
 from sp500_quantitative_dataset import config
+from sp500_quantitative_dataset.retrieve_companies import retrieve_companies
 
 
 def load_and_clean_fundamentals(filepath: str) -> pd.DataFrame:
@@ -42,6 +43,8 @@ def load_and_clean_fundamentals(filepath: str) -> pd.DataFrame:
         "CapEx",
         "Dividends Paid",
         "Stock Repurchases",
+        "EPS (Basic)",
+        "EPS (Diluted)",
     ]
 
     # Calculate TTM for flow metrics using a rolling window of 4 quarters per ticker
@@ -139,6 +142,7 @@ def calculate_financial_ratios(df: pd.DataFrame) -> pd.DataFrame:
     """
     Calculates key financial multiples based on merged price and fundamental data,
     adjusting historical shares and EPS using the Cumulative Split Factor.
+    Filters out extreme outliers caused by near-zero denominators.
     """
     # Market Capitalization (Price * Shares Outstanding)
     raw_shares = df["Shares Outstanding (Diluted)"].fillna(
@@ -147,21 +151,26 @@ def calculate_financial_ratios(df: pd.DataFrame) -> pd.DataFrame:
     adjusted_shares = raw_shares * df["Cum Split Factor"]
     df["Market Cap"] = df["Close"] * adjusted_shares
 
-    # TTM EPS Adjusted for Splits
+    # TTM EPS Adjusted for Splits (with threshold to avoid division by near-zero noise)
     adjusted_eps = df["EPS (Diluted)"] / df["Cum Split Factor"]
-    df["P/E Ratio"] = (
+    pe_raw = (
         df["Close"]
         .div(adjusted_eps)
-        .where((adjusted_eps.notna()) & (adjusted_eps > 0), np.nan)
+        .where((adjusted_eps.notna()) & (adjusted_eps > 0.01), np.nan)
     )
+    # Cap extreme P/E outliers at a realistic financial threshold (e.g., 500)
+    df["P/E Ratio"] = pe_raw.where(pe_raw <= 500, np.nan)
 
-    # Price-to-Book (P/B) Ratio
+    # Price-to-Book (P/B) Ratio (with threshold to avoid division by near-zero equity)
     book_value_per_share = df["Stockholders Equity"] / adjusted_shares
-    df["P/B Ratio"] = (
+    pb_raw = (
         df["Close"]
         .div(book_value_per_share)
-        .where((book_value_per_share.notna()) & (book_value_per_share > 0), np.nan)
+        .where((book_value_per_share.notna()) & (book_value_per_share > 0.01), np.nan)
     )
+    # Cap extreme P/B outliers at a realistic threshold (e.g., 100)
+    df["P/B Ratio"] = pb_raw.where(pb_raw <= 100, np.nan)
+    
     return df
 
 
@@ -208,6 +217,18 @@ def generate_features() -> None:
 
     print("Calculating financial ratios (P/E, P/B, Market Cap)...")
     final_df = calculate_financial_ratios(merged_df)
+
+    print("Merging GICS sector metadata...")
+    try:
+        companies_df, _ = retrieve_companies()
+        metadata_cols = ["Ticker", "Company Name", "GICS Sector", "GICS Sub-Industry"]
+        available_meta = [c for c in metadata_cols if c in companies_df.columns]
+        
+        if available_meta:
+            companies_subset = companies_df[available_meta].drop_duplicates(subset=["Ticker"])
+            final_df = pd.merge(final_df, companies_subset, on="Ticker", how="left")
+    except Exception as e:
+        print(f"Could not merge GICS metadata automatically: {e}")
 
     final_df = final_df.sort_values(by=["Date", "Ticker"]).reset_index(drop=True)
 

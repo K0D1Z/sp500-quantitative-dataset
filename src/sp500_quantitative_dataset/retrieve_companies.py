@@ -45,7 +45,7 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
         "Date added",
     ]
     companies = tables[0][companies_columns].copy()
-    companies["Date added"] = pd.to_datetime(companies["Date added"], errors="coerce")
+    companies["Date added"] = pd.to_datetime(companies["Date added"], errors="coerce", )
     companies = companies.sort_values(by="Date added", ascending=True).reset_index(
         drop=True
     )
@@ -61,7 +61,12 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
         }
     )
 
-    # 2. Process historical changes table
+    # 2. Process historical changes table (with safety check for column count & multi-index)
+    historical_changes = tables[1].copy()
+    
+    if isinstance(historical_changes.columns, pd.MultiIndex):
+        historical_changes.columns = ['_'.join(str(c) for c in col).strip() for col in historical_changes.columns.values]
+
     historical_changes_columns = [
         "Date",
         "Added Ticker",
@@ -71,11 +76,13 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
         "Change Reason",
     ]
 
-    historical_changes = tables[1].iloc[:, :6].copy()
-    historical_changes.columns = historical_changes_columns
+    # Dynamically match available columns to avoid length mismatch
+    n_cols = min(len(historical_changes.columns), len(historical_changes_columns))
+    historical_changes = historical_changes.iloc[:, :n_cols].copy()
+    historical_changes.columns = historical_changes_columns[:n_cols]
 
     historical_changes["Date"] = pd.to_datetime(
-        historical_changes["Date"], errors="coerce"
+        historical_changes["Date"], errors="coerce", format="mixed"
     )
 
     # Drop any parsing artifacts/unparsed header rows
