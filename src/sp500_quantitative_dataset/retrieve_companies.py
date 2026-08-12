@@ -30,7 +30,9 @@ def _flatten_columns(df: pd.DataFrame) -> list[str]:
     return [str(c).strip().lower() for c in df.columns]
 
 
-def _find_table(tables: list[pd.DataFrame], required_keyword_groups: list[list[str]]) -> pd.DataFrame:
+def _find_table(
+    tables: list[pd.DataFrame], required_keyword_groups: list[list[str]]
+) -> pd.DataFrame:
     """
     Scans a list of tables (as returned by pd.read_html) and returns the first one
     whose columns satisfy every keyword group. Each group is a list of alternative
@@ -75,7 +77,12 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     companies_raw = _find_table(
         tables_constituents,
-        required_keyword_groups=[["symbol", "ticker"], ["security", "company"], ["cik"], ["date added", "date"]],
+        required_keyword_groups=[
+            ["symbol", "ticker"],
+            ["security", "company"],
+            ["cik"],
+            ["date added", "date"],
+        ],
     )
 
     companies_col_mapping = {}
@@ -95,14 +102,23 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
             companies_col_mapping[col] = "Date Added"
 
     companies = companies_raw.rename(columns=companies_col_mapping)
-    required_company_cols = ["CIK", "Ticker", "GICS Sector", "GICS Sub-Industry", "Company Name", "Date Added"]
+    required_company_cols = [
+        "CIK",
+        "Ticker",
+        "GICS Sector",
+        "GICS Sub-Industry",
+        "Company Name",
+        "Date Added",
+    ]
     for rc in required_company_cols:
         if rc not in companies.columns:
             companies[rc] = None
     companies = companies[required_company_cols].copy()
 
     companies["Date Added"] = pd.to_datetime(companies["Date Added"], errors="coerce")
-    companies = companies.sort_values(by="Date Added", ascending=True).reset_index(drop=True)
+    companies = companies.sort_values(by="Date Added", ascending=True).reset_index(
+        drop=True
+    )
 
     # -------------------------------------------------------------------------
     # 2. Fetch Historical S&P 500 Index Changes
@@ -136,11 +152,15 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
             col_mapping[col] = "Date"
         elif ("add" in col_str) and ("ticker" in col_str or "symbol" in col_str):
             col_mapping[col] = "Added Ticker"
-        elif ("add" in col_str) and ("compan" in col_str or "name" in col_str or "security" in col_str):
+        elif ("add" in col_str) and (
+            "compan" in col_str or "name" in col_str or "security" in col_str
+        ):
             col_mapping[col] = "Added Company Name"
         elif ("rem" in col_str) and ("ticker" in col_str or "symbol" in col_str):
             col_mapping[col] = "Removed Ticker"
-        elif ("rem" in col_str) and ("compan" in col_str or "name" in col_str or "security" in col_str):
+        elif ("rem" in col_str) and (
+            "compan" in col_str or "name" in col_str or "security" in col_str
+        ):
             col_mapping[col] = "Removed Company Name"
         elif "reas" in col_str or "note" in col_str or "cause" in col_str:
             col_mapping[col] = "Change Reason"
@@ -160,7 +180,9 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
             historical_changes[rc] = None
     historical_changes = historical_changes[required_change_cols].copy()
 
-    historical_changes["Date"] = pd.to_datetime(historical_changes["Date"], errors="coerce")
+    historical_changes["Date"] = pd.to_datetime(
+        historical_changes["Date"], errors="coerce"
+    )
 
     # Drop parsing artifacts / unparsed header rows
     historical_changes = historical_changes.dropna(subset=["Date"])

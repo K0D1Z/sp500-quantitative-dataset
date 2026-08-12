@@ -58,45 +58,64 @@ def generate_corporate_events() -> pd.DataFrame:
 
     if historical_changes is None or historical_changes.empty:
         print("Warning: Retrieved historical changes data is empty.")
-        return pd.DataFrame(columns=['Date', 'Removed Ticker', 'Removed Company Name', 'Added Ticker', 'Change Reason', 'Event Type'])
+        return pd.DataFrame(
+            columns=[
+                "Date",
+                "Removed Ticker",
+                "Removed Company Name",
+                "Added Ticker",
+                "Change Reason",
+                "Event Type",
+            ]
+        )
 
     # Handle MultiIndex columns if returned by pd.read_html from Wikipedia
     if isinstance(historical_changes.columns, pd.MultiIndex):
         historical_changes.columns = [
-            '_'.join([str(c) for c in col if str(c) != 'nan']).strip() 
+            "_".join([str(c) for c in col if str(c) != "nan"]).strip()
             for col in historical_changes.columns.values
         ]
     else:
-        historical_changes.columns = [str(c).strip() for c in historical_changes.columns]
+        historical_changes.columns = [
+            str(c).strip() for c in historical_changes.columns
+        ]
 
     col_mapping = {}
     for col in historical_changes.columns:
         col_str = str(col).lower()
-        if 'date' in col_str:
-            col_mapping[col] = 'Date'
-        elif ('add' in col_str) and ('ticker' in col_str or 'symbol' in col_str):
-            col_mapping[col] = 'Added Ticker'
-        elif ('rem' in col_str) and ('ticker' in col_str or 'symbol' in col_str):
-            col_mapping[col] = 'Removed Ticker'
-        elif ('rem' in col_str) and ('company' in col_str or 'name' in col_str or 'security' in col_str):
-            col_mapping[col] = 'Removed Company Name'
-        elif 'reas' in col_str or 'change' in col_str or 'note' in col_str:
-            col_mapping[col] = 'Change Reason'
-            
+        if "date" in col_str:
+            col_mapping[col] = "Date"
+        elif ("add" in col_str) and ("ticker" in col_str or "symbol" in col_str):
+            col_mapping[col] = "Added Ticker"
+        elif ("rem" in col_str) and ("ticker" in col_str or "symbol" in col_str):
+            col_mapping[col] = "Removed Ticker"
+        elif ("rem" in col_str) and (
+            "company" in col_str or "name" in col_str or "security" in col_str
+        ):
+            col_mapping[col] = "Removed Company Name"
+        elif "reas" in col_str or "change" in col_str or "note" in col_str:
+            col_mapping[col] = "Change Reason"
+
     historical_changes = historical_changes.rename(columns=col_mapping)
-    
-    required_cols = ['Date', 'Removed Ticker', 'Removed Company Name', 'Added Ticker', 'Change Reason']
+
+    required_cols = [
+        "Date",
+        "Removed Ticker",
+        "Removed Company Name",
+        "Added Ticker",
+        "Change Reason",
+    ]
     for rc in required_cols:
         if rc not in historical_changes.columns:
             historical_changes[rc] = None
-            
+
     events = historical_changes[required_cols].copy()
 
     # We focus mainly on removal events because they trigger actions in the portfolio
     events = events.dropna(subset=["Removed Ticker", "Change Reason"])
 
     # Safe date conversion ignoring invalid strings
-    events["Date"] = pd.to_datetime(events["Date"], errors='coerce')
+    events["Date"] = pd.to_datetime(events["Date"], errors="coerce")
     events = events.dropna(subset=["Date"])
 
     # Categorize
@@ -136,7 +155,9 @@ if __name__ == "__main__":
     if not events_df.empty:
         print("Categorized events sample: ")
         print(
-            events_df[["Date", "Removed Ticker", "Event Type", "Change Reason"]].sample(min(10, len(events_df)))
+            events_df[["Date", "Removed Ticker", "Event Type", "Change Reason"]].sample(
+                min(10, len(events_df))
+            )
         )
 
         print("\nStatistics in the period under review: ")

@@ -170,7 +170,7 @@ def calculate_financial_ratios(df: pd.DataFrame) -> pd.DataFrame:
     )
     # Cap extreme P/B outliers at a realistic threshold (e.g., 100)
     df["P/B Ratio"] = pb_raw.where(pb_raw <= 100, np.nan)
-    
+
     return df
 
 
@@ -223,9 +223,11 @@ def generate_features() -> None:
         companies_df, _ = retrieve_companies()
         metadata_cols = ["Ticker", "Company Name", "GICS Sector", "GICS Sub-Industry"]
         available_meta = [c for c in metadata_cols if c in companies_df.columns]
-        
+
         if available_meta:
-            companies_subset = companies_df[available_meta].drop_duplicates(subset=["Ticker"])
+            companies_subset = companies_df[available_meta].drop_duplicates(
+                subset=["Ticker"]
+            )
             final_df = pd.merge(final_df, companies_subset, on="Ticker", how="left")
     except Exception as e:
         print(f"Could not merge GICS metadata automatically: {e}")

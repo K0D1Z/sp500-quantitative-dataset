@@ -63,25 +63,29 @@ def map_ticker_to_cik() -> pd.DataFrame:
     if historical_changes is not None and not historical_changes.empty:
         if isinstance(historical_changes.columns, pd.MultiIndex):
             historical_changes.columns = [
-                '_'.join([str(c) for c in col if str(c) != 'nan']).strip() 
+                "_".join([str(c) for c in col if str(c) != "nan"]).strip()
                 for col in historical_changes.columns.values
             ]
         else:
-            historical_changes.columns = [str(c).strip() for c in historical_changes.columns]
+            historical_changes.columns = [
+                str(c).strip() for c in historical_changes.columns
+            ]
 
         # Dynamically map headers to standard expected names
         col_mapping = {}
         for col in historical_changes.columns:
             col_str = str(col).lower()
-            if 'date' in col_str:
-                col_mapping[col] = 'Date'
-            elif ('rem' in col_str) and ('ticker' in col_str or 'symbol' in col_str):
-                col_mapping[col] = 'Removed Ticker'
-            elif ('rem' in col_str) and ('company' in col_str or 'name' in col_str or 'security' in col_str):
-                col_mapping[col] = 'Removed Company Name'
-            elif ('add' in col_str) and ('ticker' in col_str or 'symbol' in col_str):
-                col_mapping[col] = 'Added Ticker'
-                
+            if "date" in col_str:
+                col_mapping[col] = "Date"
+            elif ("rem" in col_str) and ("ticker" in col_str or "symbol" in col_str):
+                col_mapping[col] = "Removed Ticker"
+            elif ("rem" in col_str) and (
+                "company" in col_str or "name" in col_str or "security" in col_str
+            ):
+                col_mapping[col] = "Removed Company Name"
+            elif ("add" in col_str) and ("ticker" in col_str or "symbol" in col_str):
+                col_mapping[col] = "Added Ticker"
+
         historical_changes = historical_changes.rename(columns=col_mapping)
 
     # Ensure required columns exist to prevent KeyError
@@ -92,7 +96,9 @@ def map_ticker_to_cik() -> pd.DataFrame:
             historical_changes["Removed Company Name"] = None
 
         # Process historical changes to extract removed tickers and their corresponding CIKs
-        removed_df = historical_changes[["Removed Ticker", "Removed Company Name"]].copy()
+        removed_df = historical_changes[
+            ["Removed Ticker", "Removed Company Name"]
+        ].copy()
         removed_df = removed_df.dropna(subset=["Removed Ticker"]).drop_duplicates(
             subset=["Removed Ticker"]
         )
