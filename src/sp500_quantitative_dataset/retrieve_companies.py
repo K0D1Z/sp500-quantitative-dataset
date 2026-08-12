@@ -7,10 +7,6 @@ See the config/config.json file for the date range configuration.
 Sources:
 - Current Constituents: https://en.wikipedia.org/wiki/List_of_S%26P_500_companies
 - Historical Changes: https://en.wikipedia.org/wiki/Historical_components_of_the_S%26P_500
-
-NOTE: If retrieve_companies() isn't working correctly, it likely means the external site's structure has changed.
-Please contact me if this happens, as I'll need to update the link or selectors.
-
 """
 
 from io import StringIO
@@ -120,7 +116,7 @@ def retrieve_companies() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     changes_raw = _find_table(
         tables_changes,
-        required_keyword_groups=[["date"], ["ticker", "symbol"], ["removed", "added"]],
+        required_keyword_groups=[["date"], ["ticker", "symbol"], ["removed"]],
     )
 
     changes_raw = changes_raw.copy()

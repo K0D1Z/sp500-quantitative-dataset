@@ -200,10 +200,14 @@ The repository also utilizes [data/config/company_tickers.json](data/config/comp
 
 * Source for company tickers: https://www.sec.gov/files/company_tickers.json
 * Source for SEC Central Index Keys: https://www.sec.gov
+* Source for S&P500 Current Constituents: https://en.wikipedia.org/wiki/List_of_S%26P_500_companies
+* Source for S&P500 Historical Changes: https://en.wikipedia.org/wiki/Historical_components_of_the_S%26P_500
 
 > [!NOTE]
 > I used Gemini 3.6 Flash and Claude Sonnet 5 to search the SEC dataset and then manually checked each entry, searching available sources.
-> If you encounter any errors, please do not hesitate to contact me or create a Pull Request.
+> If you encounter any errors regarding CIKs data, please do not hesitate to contact me or create a Pull Request.
+> Wikipedia is constantly changing, if pipeline does not work it is possible that website structure has changed. Contact
+> me in that case or create PR.
 
 ---
 
